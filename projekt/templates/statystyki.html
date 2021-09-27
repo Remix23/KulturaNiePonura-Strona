@@ -1,0 +1,326 @@
+{% block head_properties %}
+<title>Statystyki</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/statystyki-style.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;margin: 1%;">Ostatnie formularze</h1>
+    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('home_page') }}">Powrót</a></h4>
+    <h4 style="cursor: pointer; text-align: center; margin-bottom: 1%; color: #FC468F;" id="select-for-file" >Pobierz plik excel</h4>
+    <div class="file-download">
+        <span class="close-download-box">X</span>
+        <h3 class="download-file-header">Wybierz co ma się znaleźć w pliku</h3>           
+        <div class="selectors-promt">
+            <span class="close-download-promt">X</span>
+            <div class="content">
+                <p style="color: red;">Musisz zaznaczyć co najmniej dwie pozycję</p>
+            </div>
+        </div>
+        <div class="statistiscs-selector">
+            <input type="checkbox" class="file-selectors" name="stats" id="stats">
+            <label for="stats">Statystyki (ilość występowania poszczeóglych pozycji)</label>
+        </div>
+        <div class="selectors-persons">
+            <h4>Osoby</h4>
+            <div>
+                <input type="checkbox" class="file-selectors" name="for-name" id="for-name">
+                <label for="for-name">Imię</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="last-name" id="last-name">
+                <label for="last-name">Nazwisko</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="nick" id="nick">
+                <label for="nick">Pseudomin</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="living-place" id="living-place">
+                <label for="living-place">Miejsce zamieszkania</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="mail" id="mail">
+                <label for="mail">Adres e-mail</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="phone-number" id="phone-number">
+                <label for="phone-number">Numer telefonu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="social-channel" id="social-channel">
+                <label for="social-channel">Linki do prac</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="about" id="about">
+                <label for="about">Opis</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="art-kind-description" id="art-kind-description">
+                <label for="art-kind-description">Opisy twórczości</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="link" id="link">
+                <label for="link">Link do profilu / kontaktu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="notes" id="notes">   
+                <label for="notes">Notatki / uwagi</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="instytutions" id="instytutions">
+                <label for="instytutions">Instytucje</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="art-kinds" id="art-kinds">
+                <label for="art-kinds">Rodzaje twórczości</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="promotion-types" id="promotion-types">
+                <label for="promotion-types">Proponowane sposoby promocji</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="know-from-types" id="know-from-types">
+                <label for="know-from-types">Z kąd zna festiwal</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="year-born" id="year-born">
+                <label for="year-born">Urodzony / urodzona</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="date-register" id="date-register">
+                <label for="date-register">Data rejerstracji</label>
+            </div>
+        </div>
+        <div class="selectors-teams">
+ 
+            <h4>Zespoły</h4>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-for-name-team-register" id="team-for-name-team-register">
+                <label for="team-for-name-team-register">Imię osoby rejerstrującej zespół</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-last-name-team-register" id="team-last-name-team-register">
+                <label for="team-last-name-team-register">Nazwisko osoby rejerstrującej zespół</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-team-name" id="team-team-name">
+                <label for="team-team-name">Nazwa zespołu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-team-size" id="team-team-size">
+                <label for="team-team-size">Ilośc osób w zespole</label>
+            </div>            
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-mail" id="team-mail">
+                <label for="team-mail">Adres e-mail</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-phone-number" id="team-phone-number">
+                <label for="team-phone-number">Numer telefonu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-social-channel" id="team-social-channel">
+                <label for="team-social-channel">Linki do prac</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-about" id="team-about">
+                <label for="team-about">Opis</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-art-kind-description" id="team-art-kind-description">
+                <label for="team-art-kind-description">Opisy twórczości</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-link" id="team-link">
+                <label for="team-link">Link do profilu / kontaktu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-notes" id="team-notes">   
+                <label for="team-notes">Notatki / uwagi</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-instytutions" id="team-instytutions">
+                <label for="team-instytutions">Instytucje</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-art-kinds" id="team-art-kinds">
+                <label for="team-art-kinds">Rodzaje twórczości</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-promotion-types" id="team-promotion-types">
+                <label for="team-promotion-types">Proponowane sposoby promocji</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-know-from-types" id="team-know-from-types">
+                <label for="team-know-from-types">Z kąd zna festiwal</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-living-places" id="team-living-places">
+                <label for="team-living-places">Miejsca zamieszkania członków zespołu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-born-dates" id="team-born-dates">
+                <label for="team-born-dates">Daty urodzenia członków zespołu</label>
+            </div>
+            <div>
+                <input type="checkbox" class="file-selectors" name="team-date-register" id="team-date-register">
+                <label for="team-date-register">Data rejerstracji</label>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="download-all" class="btn-important">Pobierz wszystko</button>
+            <button id="download-selected-file" class="btn-important" >Pobierz z zaznaczeniem</button>
+        </div>
+    </div>
+    
+    <h2 class="open-counters-box">Statystyki - ilości występowania</h2>
+    <div class="counters-box">
+        <h1 style="text-align: center;margin: 1%;">Statystyki</h1>
+        <span class="close-counters-box">X</span>
+        <div class="counters-data">
+            <div class="intytutions-box main-holder">
+                <h3>Instytucje ({{ data['instytutions']|length }})</h3>
+                <div class="option-holder instytutions-option-holder">
+                    {% for instytution in data['instytutions'] %}
+                        <p>{{ instytution }}: <span class="num">{{ data['instytutions'][instytution] }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="art-kinds-box main-holder">
+                <h3>Rodzaje sztuki ({{ data['art_kinds']|length }})</h3>
+                <div class="option-holder art-kinds-option-holder">
+                    {% for art_kind in data['art_kinds'] %}
+                        <p>{{ art_kind }}: <span class="num">{{ data['art_kinds'][art_kind] }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="promotion-types-box main-holder">
+                <h3>Proponowane rodzaje promocji ({{ data['promotion_types']|length }})</h3>
+                <div class="option-holder promotion-types-option=holder">
+                    {% for promotion_type in data['promotion_types'] %}
+                        <p>{{ promotion_type }}: <span class="num">{{ data['promotion_types'][promotion_type] }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="know-from-types-box main-holder">
+                <h3>Skąd znają festiwal ({{ data['know_from_types']|length }})</h3>
+                <div class="option-holder know-from-types-option-holder">
+                    {% for know_from_type in data['know_from_types'] %}
+                        <p>{{ know_from_type }}: <span class="num">{{ data['know_from_types'][know_from_type] }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="living-places-box main-holder">
+                <h3>Miejsca zamieszkania ({{ data['living_places']|length }})</h3>
+                <div class="option-holder living-places-option-holder">
+                    {% for living_place in data['living_places'] %}
+                        <p>{{ living_place}}: <span class="num">{{ data['living_places'][living_place] }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="born-dates-box main-holder">
+                <h3>Daty urodzenia ({{ data['born_dates']|length }})</h3>
+                <div class="option-holder born-dates-option-holder">
+                    {% for born_date in data['born_dates'] %}
+                        <p>{{ born_date }}: <span class="num">{{ data['born_dates'][born_date] }}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="data">
+        <div class="persons table-div">
+            <div class="table-title-div">
+                <h2 class="table-title" id="persons-table-title">Osoby</h2>
+            </div>
+            <table class="table-persons">
+                <tr class="row-top">
+                    <th>Numer<br><span class="sort" prefix="person" to-sort="index">Posortuj</span></th>
+                    <th>Imię<br><span class="sort" prefix="person" to-sort="for-name">Posortuj</span></th>
+                    <th>Nazwisko<br><span class="sort" prefix="person" to-sort="last-name">Posortuj</span></th>
+                    <th>Pseudomin<br><span class="sort" prefix="person" to-sort="nick">Posortuj</span></th>
+                    <th>Miejsce zamieszkania<br><span class="sort" prefix="person" to-sort="living-place">Posortuj</span></th>
+                    <th>Mail<br><span class="sort" prefix="person" to-sort="mail">Posortuj</span></th>
+                    <th>Numer Telefonu<br><span class="sort" prefix="person" to-sort="phone-number">Posortuj</span></th>
+                    <th>Linki społecznościowe<br><span class="sort" prefix="person" to-sort="social-channel">Posortuj</span></th>
+                    <th>Opis<br><span class="sort" prefix="person" to-sort="about">Posortuj</span></th>
+                    <th>Link do jego prac<br><span class="sort" prefix="person" to-sort="link">Posortuj</span></th>
+                    <th>Notatki / uwagi<br><span class="sort" prefix="person" to-sort="notes">Posortuj</span></th>
+                    <th>Urodził się<br><span class="sort" prefix="person" to-sort="year-born">Posortuj</span></th>
+                    <th>Zajerejstrował się<br><span class="sort" prefix="person" to-sort="date-register">Posortuj</span></th>
+                    <th>Akcje</th>
+                </tr>
+                {% for line in data['persons'] %}
+                <tr class="row-data row-data-person">
+                    <td class="person person-index">{{ data['persons']|length - loop.index0 }}</td>
+                    <td class="person person-for-name">{{ line['for_name'] }}</td>
+                    <td class="person person-last-name">{{ line['last_name'] if line['last_name'] != '' else '-' }}</td>
+                    <td class="person person-nick">{{ line['nick'] if line['nick'] != '' else "-"}}</td>
+                    <td class="person person-living-place">{{ line['living_place'] }}</td>
+                    <td class="person person-mail"><a href="mailto:{{ line['mail'] }}">{{ line['mail'] }}</a></td>
+                    <td class="person person-phone-number">{{ "-" if line['phone_number'] == -1 else line['phone_number'] }}</td>
+                    <td class="person person-social-channel" title="{{ line['social_channel'] }}">{{ line['social_channel']|truncate(10) }}</td>
+                    <td class="person person-about" title="{{ line['about'] }}">{{ line['about']|truncate(10) }}</td>
+                    <td class="person person-link" title="{{ line['link']}}">{{ line['link']|truncate(10)}}</td>
+                    <td class="person person-notes" title="{{ line['notes'] }}">{{ line['notes']|truncate(10) if line['notes'] != '' else '-'}}</td>
+                    <td class="person person-year-born">{{ line['year_born'].strftime("%d-%m-%Y") }}</td>
+                    <td class="person person-date-register">{{ line['date_register'] }}</td>
+                    <td>
+                        <div class="actions-buttons">   
+                            <a href="/statistics/persons/{{ line['id'] }}" class="details">Szczegóły</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="teams table-div">
+            <div class="table-title-div">
+                <h2 class="table-title" id="team-table-title">Zespoły</h2>
+            </div>
+            <table class="table-teams">
+                <tr class="row-top">
+                    <th>Numer<br><span class="sort" prefix="team" to-sort="index">Posortuj</span></th>
+                    <th>Imię osoby rejerstrującej<br><span class="sort" prefix="team" to-sort="for-name">Posortuj</span></th>
+                    <th>Nazwisko osoby rejerstrującej<br><span class="sort" prefix="team" to-sort="last-name">Posortuj</span></th>
+                    <th>Nazwa zespołu<br><span class="sort" prefix="team" to-sort="team-name">Posortuj</span></th>
+                    <th>Rozmiar zespołu<br><span class="sort" prefix="team" to-sort="team-size">Posortuj</span></th>
+                    <th>Mail kontaktowy<br><span class="sort" prefix="team" to-sort="mail">Posortuj</span></th>
+                    <th>Numer Telefonu<br><span class="sort" prefix="team" to-sort="phone-number">Posortuj</span></th>
+                    <th>Linki do prac<br><span class="sort" prefix="team" to-sort="link">Posortuj</span></th>
+                    <th>Opis<br><span class="sort" prefix="team" to-sort="about">Posortuj</span></th>
+                    <th>Link do kontaktu<br><span class="sort" prefix="team" to-sort="social-channel">Posortuj</span></th>
+                    <th>Notatki / uwagi<br><span class="sort" prefix="team" to-sort="notes">Posortuj</span></th>
+                    <th>Zajerejstrował się<br><span class="sort" prefix="team" to-sort="date-register">Posortuj</span></th>
+                    <th>Akcje</th>
+                </tr>
+                {% for line in data['teams'] %}
+                <tr class="row-data row-data-team">
+                    <td class="team team-index">{{ data['teams']|length - loop.index0 }}</td>
+                    <td class="team team-for-name">{{ line['for_name_team_register'] }}</td>
+                    <td class="team team-last-name">{{ line['last_name_team_register'] if line['last_name_team_register'] != '' else '-'}}</td>
+                    <td class="team team-name">{{ line['team_name'] }}</td>
+                    <td class="team team-size">{{ line['team_size'] }}</td>
+                    <td class="team team-mail"><a href="mailto:{{ line['mail'] }}">{{ line['mail'] }}</a></td>
+                    <td class="team team-phone-number">{{ line['phone_number'] if line['phone_number'] != '' and line['phone_number'] > 0 else '-'}}</td>
+                    <td class="team team-social-channel" title="{{ line['social_channel'] }}">{{ line['social_channel']|truncate(10) }}</td>
+                    <td class="team team-about"title="{{ line['about'] }}">{{ line['about']|truncate(10) }}</td>
+                    <td class="team team-link" title="{{ line['link'] }}">{{ line['link']|truncate(10) }}</td>
+                    <td class="team team-notes" title="{{ line['notes'] }}">{{  line['notes']|truncate(10) if  line['notes'] != '' else '-' }}</td>
+                    <td class="team team-date-register">{{ line['date_register']}}</td>
+                    <td>
+                        <div class="actions-buttons">   
+                            <a href="/statistics/teams/{{ line['id'] }}" class="details">Szczegóły</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/statystyki_functions.js') }}"></script>
+</div>
+{% endblock %}

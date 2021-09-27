@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block head_properties %}
+<title>{{ "{} {}".format(data['for_name'], data['last_name'] ) }} - Formularz</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/show-one-style.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;margin: 1%;">{{ "{} {}".format(data['for_name'], data['last_name']) }}</h1>
+    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('home_page') }}">Strona główna</a></h4>
+    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('get_all_data') }}">Statystyki</a></h4>
+    <div class="data">
+        <div class="infos">
+            <div class="general option-holder">
+                <h4>Informacje ogólne</h4>
+                <p class="info " id="for-name">Imię: <span class="value">{{ data['for_name'] }}</span></p>
+                <p class="info" id="last-name">Nazwisko: <span class="value">{{ data['last_name'] }}</span></p>
+                <p class="info" id="e-mail">Adres e-mail: <a class="link" style="color: #7BE8C4;" href="mailto:{{ data['mail'] }}">{{ data['mail'] }}</a></p>
+                <p class="info" id="nick">Pseudomin artystyczny: <span class="value">{{ data['nick'] if data['nick'] != "" else "-"}}</span></p>
+                <p class="info" id="living-place">Miejsce zamieszkania: <span class="value">{{ data['living_place'] }}</span></p>
+                <p class="info" id="phone-number">Numer Telefonu: <span class="value">{{ data['phone_number'] if data['phone_number'] > -1 and data['phone_number'] != '' else "-"}}</span></p>
+                <p class="info">Link(i) do facebooka: <span class="value">{{ data['link'] if data['link'] != "" else "-"}}</span></p>
+                <p class="info" id="about">Opis: <span class="value">{{ data['about'] }}</span></p>
+            </div>
+            <!-- Lists -->
+            <div class="instytutions option-holder">
+                <h4>Instytucje</h4>
+                {% for instytution in data['instytutions'] %}
+                <p class="info">{{ loop.index }}. <span class="value">{{ 'artystka / artysta niezrzeszona / niezrzeszony' if instytution == "artystka / artysta niezrzeszona / niezrzeszony" else instytution }}</span></p>
+                {% endfor %}
+            </div>
+            <div class="art-kinds option-holder">
+                <h4>Rodzaje twórczości</h4>
+                {% for art_kind in data['art_kinds'] %}
+                <p class="info info">{{ loop.index }}. <span class="value">{{ art_kind }}</span></p>
+                {% endfor %}
+                <p class="info">Opis twórczośći: <span class="value">{{ data['art_kind_description'] }}</span></p>
+                <p class="info">Link do prac: <span class="value">{{ data['social_channel'] }}</span></p>
+            </div>
+            <div class="promo-types option-holder">
+                <h4>Proponowane możliwości wypromowania</h4>
+                {% for promo_type in data['promotion_types'] %}
+                <p class="info">{{ loop.index }}. <span class="value">{{ promo_type }}</span</p>
+                {% endfor %}
+            </div>
+            <div class="know-from option-holder">
+                <h4>Dowiedział się o festiwalu z: </h4>
+                {% for know_from_type in data['know_from_types'] %}
+                <p class="info">{{ loop.index }}. <span class="value">{{ know_from_type }}</span></p>
+                {% endfor %}
+            </div>
+            <div class="option-holder">
+                <h4>Reszta informacji</h4>
+                <p class="info">Notatki: <span class="value">{{ data['notes'] if data['notes'] != '' else '-' }}</span></p>
+                <p class="info" id="born">Urodzony/a: <span class="value">{{ data['year_born'].strftime("%d.%m.%Y") }}</span></p>
+                <p class="info" id="register">Zarejerstrowany: <span class="value">{{ data['date_register'] }}</span></p>
+            </div>
+        </div>
+        <div class="actions option-holder">
+            <ul>
+                <h4>Akcje</h4>
+                <li><a href="mailto:{{ data['mail'] }}">Napisz maila: </a></li>
+                <li><a href="/delete/person/{{ data['id'] }}">Usuń</a></li>
+                <li><a href="{{ url_for ('get_file_all', filetype='excel') }}">Pobierz wszystkie statystyki</a></li>
+                <li><a href="/download/person/{{ data['id'] }}/excel">Pobierz plik z tą osobą</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

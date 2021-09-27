@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139520886-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139520886-2');
+</script>
+    {% block head_properties %}{% endblock %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Oficjalna strona Festiwalu Kultura Nieponura"
+    />
+    <meta
+      name="keywords"
+      content="festiwal, kultura, kulturanieponura, legalne źródła"
+    />
+
+    <meta property="og:url" content="http://kulturanieponura.pl/" />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:title"              content="When Great Minds Don’t Think Alike" /> -->
+    <!-- <meta property="og:description"        content="How much does culture influence creative thinking?" /> -->
+    <meta property="og:image" content="{{ url_for('static', filename='img/logo_cale.png') }}" />
+
+    <meta name="author" content="Marcin Warno" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-style.css') }}" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>

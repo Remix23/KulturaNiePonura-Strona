@@ -1,0 +1,205 @@
+{
+    "cafes" : [
+        {
+            "name" : "Żona Krawca",
+            "link" : "https://www.facebook.com/ZonaKrawca"
+        },
+        {
+            "name" : "Kawiarnia Kafka",
+            "link" : "https://www.facebook.com/Kawiarnia.Kafka"
+        },
+        {
+            "name" : "Klubokawiarnia Jaś & Małgosia",
+            "link" : "https://www.facebook.com/klubjasimalgosia"
+        },
+        {
+            "name" : "Kawałyksztuki",
+            "link" : "https://www.facebook.com/kawalyksztuki"
+        },
+        {
+            "name" : "Klubokawiarnia Alternatywy",
+            "link" : "https://www.facebook.com/klubokawiarnia.alternatywy"
+        },
+        {
+            "name" : "Proces Kawki",
+            "link" : "https://www.facebook.com/proceskawki"
+        },
+        {
+            "name" : "Miło Bistro",
+            "link" : "https://www.facebook.com/milobistro"
+        },
+        {
+            "name" : "Relax na Wilczej",
+            "link" : "https://www.facebook.com/RelaxNaWilczej"
+        }
+    ],
+    "events" : [
+        {
+            "name" : "Tomasz Suzin-Biruta",
+            "theme" : "pokaz fotografii",
+            "date" : "June 26, 2021 14:00:00",
+            "duration" : "June 26, 2021 16:30:00"
+        },
+        {
+            "name" : "Zuzia Leżańska",
+            "theme" : "występ muzyczny",
+            "date" : "June 26, 2021 16:30:00",
+            "duration" : "June 26, 2021 17:00:00"
+        },
+        {
+            "name" : "Zuzia Leżańska",
+            "theme" : "występ muzyczny",
+            "date" : "June 26, 2021 18:00:00",
+            "duration" : "June 26, 2021 18:30:00"
+        },
+        {
+            "name" : "Mateusz Chmielewski",
+            "theme" : "pokaz prac plastycznych",
+            "date" : "June 29, 2021 15:30:00",
+            "duration" :  "June 29, 2021 18:00:00"
+        },
+        {
+            "name" : "Iga Kossakowska",
+            "theme" : "pokaz prac plastycznych",
+            "date" : "July 3, 2021 15:30:00",
+            "duration" :  "July 3, 2021 18:00:00"
+        },
+        {
+            "name" : "Aleksandra Majówka",
+            "theme" : "popołudnie poetyckie",
+            "date" : "July 7, 2021 15:30:00",
+            "duration" :  "July 7, 2021 18:00:00"
+        },
+        {
+            "name" : "Patrycja Wolska",
+            "theme" : "występ muzyczny",
+            "date" : "July 10, 2021 16:30:00",
+            "duration" :  "July 10, 2021 17:00:00"
+        },
+        {
+            "name" : "Patrycja Wolska",
+            "theme" : "występ muzyczny",
+            "date" : "July 10, 2021 18:00:00",
+            "duration" :  "July 7, 2021 18:30:00"
+        },
+        {
+            "name" : "Kamil Jarka",
+            "theme" : "pokaz rzeźby",
+            "date" : "July 11, 2021 14:00:00",
+            "duration" :  "July 11, 2021 16:30:00"
+        },
+        {
+            "name" : "Oksana Rodkina",
+            "theme" : "występ muzyczny",
+            "date" : "July 14, 2021 16:30:00",
+            "duration" :  "July 14, 2021 17:00:00"
+        },
+        {
+            "name" : "Oksana Rodkina",
+            "theme" : "występ muzyczny",
+            "date" : "July 14, 2021 18:00:00",
+            "duration" :  "July 14, 2021 18:30:00"
+        },
+        {
+            "name" : "Michał Święcicki",
+            "theme" : "występ muzyczny",
+            "date" : "July 16, 2021 16:30:00",
+            "duration" :  "July 16, 2021 17:00:00"
+        },
+        {
+            "name" : "Michał Święcicki",
+            "theme" : "występ muzyczny",
+            "date" : "July 16, 2021 18:00:00",
+            "duration" :  "July 16, 2021 18:30:00"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "KONCERT (szczegóły podamy później)",
+            "date" : "July 17, 2021 15:00:00",
+            "duration" :  "July 17, 2021 16:30:00"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "KONCERT (szczegóły podamy później)",
+            "date" : "July 17, 2021 18:00:00",
+            "duration" :  "July 17, 2021 21:00:00"
+        },
+        {
+            "name" : "Klaudia Anika Sułkowska",
+            "theme" : "pokaz prac plastycznych",
+            "date" : "July 20, 2021 15:30:00",
+            "duration" :  "July 20, 2021 18:00:00"
+        },
+        {
+            "name" : "Angelika Piznal",
+            "theme" : "występ muzyczny",
+            "date" : "July 24, 2021 16:30:00",
+            "duration" :  "July 24, 2021 17:00:00"
+        },
+        {
+            "name" : "Angelika Piznal",
+            "theme" : "występ muzyczny",
+            "date" : "July 24, 2021 18:00:00",
+            "duration" :  "July 24, 2021 18:30:00"
+        },
+        {
+            "name" : "Pelagia Kozielska",
+            "theme" : "pokaz prac plastycznych",
+            "date" : "July 27, 2021 15:30:00",
+            "duration" :  "July 27, 2021 18:00:00"
+        },
+        {
+            "name" : "Agata Zając",
+            "theme" : "występ muzyczny",
+            "date" : "July 29, 2021 16:30:00",
+            "duration" :  "July 29, 2021 17:00:00"
+        },
+        {
+            "name" : "Agata Zając",
+            "theme" : "występ muzyczny",
+            "date" : "July 29, 2021 18:00:00",
+            "duration" :  "July 29, 2021 18:30:00"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "Talk-Show Festiwalu Kultura Nieponura odc. I",
+            "episode" : 1,
+            "date" : "June 28, 2021",
+            "duration" :  "July 31, 2021"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "Talk-Show Festiwalu Kultura Nieponura odc. II",
+            "episode" : 2,
+            "date" : "July 5, 2021",
+            "duration" :  "July 31, 2021"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "Talk-Show Festiwalu Kultura Nieponura odc. II",
+            "episode" : 3,
+            "date" : "July 12, 2021",
+            "duration" :  "July 31, 2021"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "Talk-Show Festiwalu Kultura Nieponura odc. IV",
+            "episode" : 4,
+            "date" : "July 19, 2021",
+            "duration" :  "July 31, 2021"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "Talk-Show Festiwalu Kultura Nieponura odc. V",
+            "episode" : 5,
+            "date" : "July 26, 2021",
+            "duration" :  "July 31, 2021"
+        },
+        {
+            "name" : "FKN",
+            "theme" : "odsłonięcie muralu Festiwalu Kultura Nieponura",
+            "date" : "July 31, 2021",
+            "duration" :  "July 31, 2021"
+        }
+    ]
+}

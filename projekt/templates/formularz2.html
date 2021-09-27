@@ -1,0 +1,434 @@
+{% extends 'base.html' %}
+
+{% block head_properties %}
+<title>Formularz</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/formularz2.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='img/logo-long-new.png') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<body>
+    <header class="header-form">
+        <div class="header-content">
+            <a class="header--logo" href="{{ url_for ('home_page') }}">
+                <img class="header-logo-form" src="{{ url_for('static', filename='img/logo-long-new.png') }}" />
+                <p><span class="blue">F</span>ESTIWAL<br>
+                    <span class="pink">K</span>ULTURA<br>
+                    <span class="yellow">N</span>IEPONURA</p>
+              </a>
+        </div>
+    </header>
+    <div class="content-main">
+    <div class="content-form">
+        <div class="section-form section-0 top">
+            <div class="subsection">
+                <div class="main-title sub-title">
+                    <h1>Formularz Zgłoszeniowy <br><span class="blue">Festiwal</span> <span class="pink">Kultura</span> <span class="yellow">Nieponura</span> 2021</h1>
+                </div>
+                <p class="info" id="introduction">
+                    Cześć! Bardzo się cieszymy, że chcesz się pokazać na Festiwalu Kultura Nieponura. 
+                    Naszą misją jest promocja młodych artystów i legalnych źródeł kultury. 
+                    Ankieta zajmie Ci ok. 15 minut. Pamiętaj, że odpowiedzi przyjmujemy tylko do 6 kwietnia 2021 r.
+                </p>
+            </div>
+            <div class="subsection">
+                <div class="sub-title">
+                    <h2>
+                        Ankieta skierowana jest do artystów i artystek, którzy/które urodzili/urodziły się w latach 1995-2006 i mieszkają na terytorium Polski.
+                    </h2>
+                </div>
+                <p>
+                    Regulamin ze szczegółowymi wymogami (m.in. wieku w przypadku zespołów artystycznych) dostępny jest <a target="_blank" class="blue" href="{{ url_for('static', filename='Regulamin rekrutacji 2021.pdf')}}">tutaj</a>.
+                </p>
+            </div>
+            <div class="subsection btn-subsection">
+                <button style="visibility: hidden;">Cofnij</button>
+                <button class="next-stage" to="1">Dalej</button>
+            </div>
+        </div>
+        <div class="section-form section-1">
+            <div class="subsection">
+                <div class="sub-title">
+                    <h2>
+                        Jak się nazywasz? Jak mamy się do Ciebie zwracać?*
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Pamiętaj, że w przypadku zespołu ankietę wypełnia 1 osoba.
+                </p>
+                <input type="text" name="name" id="name" class="req">
+            </div>
+            <div class="subsection">
+                <div class="sub-title">
+                    <h2>
+                        Prosimy podaj swój adres e-mail.*
+                    </h2>
+                </div>
+                <input class="req" type="text" name="mail" id="mail" placeholder="n.p.: jan.kowalski@gmail.com">
+                <input type="text" name="mail-repeat" id="mail-repeat" placeholder="powtórz adres e-mail" autocomplete="off">
+            </div>
+            <div class="subsection" id="mode-input">
+                <div class="sub-title">
+                    <h2>Chcesz wystąpić sam/sama czy w zespole?</h2>
+                </div>
+                <div>
+                    <input type="radio" name="section-1-radio" id="sam" value="sam/sama" checked>
+                    <label for="sam">Sama / Sam</label>
+                </div>
+                <div>
+                    <input type="radio" name="section-1-radio" id="zespół" value="zespół">
+                    <label for="zespół">W zespole</label>
+                </div>
+            </div>
+            <div class="subsection btn-subsection">
+                <button class="previous-stage" to='0'>Cofnij</button>
+                <button id="section-1-next-button">Dalej</button>
+            </div>
+        </div>
+        <div class="section-form section-2" id="sam-section">
+            <div class="subsection" id="nick-div">
+                <div class="sub-title">
+                    <h2>
+                        Czy masz jakiś pseudonim artystyczny?
+                    </h2>
+                </div>
+                <input type="text" id="nick" name="nick">
+            </div>
+            <div class="subsection" id="date-born-div">
+                <div class="sub-title">
+                    <h2>
+                        Kiedy się urodziłaś/urodziłeś?*
+                    </h2>
+                </div>
+                <input type="date" id="date-born" name="date-born" class="req"  min='1995-01-01' max='2006-12-31'>   
+            </div>
+            <div class="subsection" id="living-place-div">
+                <div class="sub-title">
+                    <h2>
+                        Gdzie mieszkasz?*
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Jeśli mieszkasz w Warszawie, napisz w jakiej dzielnicy. Jeśteśmy ciekawi, gdzie są młodzi artyści i młode artystki!
+                </p>
+                <input type="text" id="living-place" name="living-place" class="req">
+            </div>
+            <div class="subsection" id="with-who-div">
+                <div class="sub-title">
+                    <h2>
+                        Z kim działasz?*
+                    </h2>
+                </div>
+                <div>
+                    <input type="radio" name="with-who-option" id="with-who-instytution" value="with">
+                    <label for="with-who-instytution">Instytuja niezależna (nazwa)</label>
+                    <div id="working-with-instytutions" type='alone' n="instytutions"></div> <!-- instytutions are added by js -->
+                </div>
+                <div>
+                    <input type="radio" name="with-who-option" id="with-who-alone" value="sam" checked>
+                    <label for="with-who-alone">artystka niezrzeszona / artysta niezrzeszony</label>
+                </div>
+            </div>
+            <div class="subsection" id="about-div">
+                <div class="sub-title">
+                    <h2>
+                        Powiedz coś o sobie!*
+                    </h2>
+                </div>
+                <textarea class="textarea-form req" name="about" id="about" style="resize: none;" rows="4" cols="50"></textarea>
+            </div>
+            <div class="subsection" id="art-kind-div">
+                <div class="sub-title">
+                    <h2>
+                        Z jakiej dziedziny sztuki jest praca, którą chcesz pokazać?*
+                    </h2>
+                </div>
+                <div class="art-kind-options req" type="alone"></div>
+            </div>
+            <div class="subsection" id="art-kind-more-div">
+                <div class="sub-title">
+                    <h2>
+                        Powiedz o niej coś więcej!*
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Jeśli to muzyka - komponujesz, śpiewasz czy robisz obie rzeczy? Jeśli film - ile trwa, o czym jest. Jeśli to taniec - jaki styl, gdzie trenujesz...
+                </p>
+                <textarea class="textarea-form req" name="art-kind-more" id="art-kind-more" style="resize: none;" rows="4" cols="50" ></textarea>
+            </div>
+            <div class="subsection btn-subsection">
+                <button class="previous-stage" to='1'>Cofnij</button>
+                <button class="next-stage" to="3">Dalej</button>
+            </div>
+        </div>
+        <div class="section-form section-3" id="sam-section-more">
+            <div class="subsection" id="working-place-div">
+                <div class="sub-title">
+                    <h2>
+                        Czy masz kanał na YT, Facebooku lub Instagramie? Albo możesz udostępnić nam próbkę swoich umiejętności? Chętnie zobaczymy, co tworzysz.*
+                    </h2>
+                </div>
+                <input type="text" id="working-place" name="working-place" class="req">
+            </div>
+            <div class="subsection" id="promotion-div">
+                <div class="sub-title">
+                    <h2>
+                        W jaki sposób chcesz, żebyśmy Cię wypromowali?
+                    </h2>
+                </div>
+                <div class="promotion-options req" type="team"></div>
+            </div>
+            <div class="subsection" id="know-from-div">
+                <div class="sub-title">
+                    <h2>
+                        Skąd dowiedziałaś/dowiedziałeś się o Festiwalu?*
+                    </h2>
+                </div>
+                <div class="know-from-options req" type="alone"></div>
+            </div>
+            <div class="subsection btn-subsection">
+                <button class="previous-stage" to='2'>Cofnij</button>
+                <button class="next-stage" to="6">Dalej</button>
+            </div>
+        </div>
+        <div class="section-form section-4" id="team-section">
+            <div class="subsection" id="team-name-div">
+                <div class="sub-title">
+                    <h2>
+                        Jak nazywa się wasz zespoł?*
+                    </h2>
+                </div>
+                <input type="text" name="team-name" id="team-name" class="req">
+            </div>
+            <div class="subsection" id="team-size-div">
+                <div class="sub-title">
+                    <h2>
+                        Ile osób liczy wasz zespół?*
+                    </h2>
+                </div>
+                <input type="number" name="team-size" id="team-size" min="1" max="9999" class="req" value="2">
+            </div>
+            <div class="subsection" id="team-members-year-born-div">
+                <div class="sub-title">
+                    <h2>
+                        W jakich latach urodzili/urodziły się członkowie/członkinie zespołu?*
+                    </h2>
+                </div>
+                <div id="members-year-born-date" class="req" n="year-born-dates"></div> <!-- members are added by js -->
+            </div>
+            <div class="subsection" id="team-living-place-div">
+                <div class="sub-title">
+                    <h2>
+                        Gdzie mieszkacie?*
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Jeśli mieszkacie w Warszawie, napisz w jakiej dzielnicy. Jeśteśmy ciekawi, gdzie są młodzi artyści i młode artystki!
+                </p>
+                <div class="req" n="living-places" id="team-living-place"></div> <!-- living places are added by js -->
+            </div>
+            <div class="subsection" id="team-with-who-div">
+                <div class="sub-title">
+                    <h2>
+                        Z kim działacie?*
+                    </h2>
+                </div>
+                <div>
+                    <input type="radio" name="team-with-who-option" id="team-with-who-instytution" value="with" >
+                    <label for="team-with-who-instytution">Instytucja niezależna (nazwa)</label>
+                    <div id="team-working-with-instytutions" type='team' n="instytutions"></div> <!-- instytutions are added by js -->
+                </div>
+                <div>
+                    <input type="radio" name="team-with-who-option" id="team-with-who-alone" value="sami" checked>
+                    <label for="team-with-who-alone">Artystki niezrzeszona / Artyści niezrzeszony</label>
+                </div>
+            </div>
+            <div class="subsection" id="team-about-div">
+                <div class="sub-title">
+                    <h2>
+                        Powiedzcie coś o zespole!*
+                    </h2>
+                </div>
+                <textarea class="textarea-form req" name="team-about" id="team-about" style="resize: none;" rows="4" cols="50" rq="yes"></textarea>
+            </div>
+            <div class="subsection" id="team-art-kind-div">
+                <div class="sub-title">
+                    <h2>
+                        Z jakiej dziedziny sztuki jest praca, którą chcecie pokazać?*
+                    </h2>
+                </div>
+                <div class="art-kind-options req" type="team" ></div>
+            </div>
+            <div class="subsection" id="team-art-kind-more-div">
+                <div class="sub-title">
+                    <h2>
+                        Powiedzcie o niej coś więcej!*
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Jeśli to muzyka - gracie, śpiewasz czy robicie obie rzeczy? Jeśli film - ile trwa, o czym jest. Jeśli to taniec - jaki styl, gdzie trenujecie...
+                </p>
+                <textarea class="textarea-form req" name="team-art-kind-more" id="team-art-kind-more" style="resize: none;" rows="4" cols="50" rq="yes"></textarea>
+            </div>
+            <div class="subsection btn-subsection">
+                <button class="previous-stage" to='1'>Cofnij</button>
+                <button class="next-stage" to="5">Dalej</button>
+            </div>
+        </div>
+        <div class="section-form section-5" id="team-section-more">
+            <div class="subsection" id="team-working-place-div">
+                    <div class="sub-title">
+                        <h2>
+                            Czy macie kanał na YT, Facebooku lub Instagramie? Albo możecie udostępnić nam próbkę swoich umiejętności? Chętnie zobaczymy, co tworzycie.*
+                        </h2>
+                    </div>
+                    <input type="text" id="team-working-place" name="team-working-place" class="req">
+            </div>
+            <div class="subsection" id="team-promotion-div">
+                <div class="sub-title">
+                    <h2>
+                        W jaki sposób chcecie, żebyśmy was wypromowali?*
+                    </h2>
+                </div>
+                <div class="promotion-options req" type="team"></div>
+            </div>
+            <div class="subsection" id="team-know-from-div">
+                    <div class="sub-title">
+                        <h2>
+                            Skąd dowiedziałyście / dowiedzieliście się o Festiwalu?*
+                        </h2>
+                    </div>
+                    <div class="know-from-options req" type="team"></div>
+            </div>
+            <div class="subsection btn-subsection">
+                <button class="previous-stage" to='4'>Cofnij</button>
+                <button class="next-stage" to="6">Dalej</button>
+            </div>
+        </div>
+        <div class="section-form section-6" id="RODO">
+            <div class="subsection" id="rodo-groups-div">
+                <div class="sub-title">
+                    <h2>
+                        Po zakończeniu rekrutacji stworzymy grupy na Messengerze, by łatwiej komunikować się z artystami/artystkami, dlatego prosimy o zostawienie tutaj linku do swojego profilu na Facebooku.*
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Jeśli korzystasz z komputera, wystarczy, że w nowej zakładce otworzysz Facebooka i wejdziesz na swój profil, a następnie skopiujesz link z paska przeglądarki. Jeśli korzystasz z telefonu, wejdź na swój profil i kliknij w trzy kropki po prawej stronie, tuż obok guzika "Dodaj relację". Na dole znajduje się przycisk "Skopiuj link". Jeśli nie masz Facebooka, podaj w tym miejscu numer telefonu.
+                </p>
+                <img src="" alt="">
+                <input type="text" class="req" id="tel-number" name="tel-number" >
+            </div>
+            <div class="subsection" id="rodo-write-div">
+                <div class="sub-title">
+                    <h2>
+                        Czy wiedziałaś/wiedziałeś, że zawsze możesz do nas napisać?
+                    </h2>
+                </div>
+                <p class="sub-info">
+                    Pisz śmiało na maila <a class="blue" href="mailt:kulturanieponura@gmail.com">kulturanieponura@gmail.com</a>,<br>Messengera: <a target="_blank" class="pink" href="https://www.facebook.com/kulturanieponura/">Festiwal Kultura Nieponura</a>,<br>Instagrama: <a target="_blank" class="yellow" href="https://www.instagram.com/kulturanieponura/?hl=pl">kulturanieponura</a>!<br>Zapraszamy też na naszą <a target="_blank" class="blue" href="http://kulturanieponura.pl/">stronę internetową</a>.
+                </p>
+                <label for="rodo-write-super">Super!</label>
+                <input type="checkbox" id="rodo-write-super" name="rodo-write-super">
+            </div>
+            <div class="subsection" id="rodo-notes-div">
+                <div class="sub-title">
+                    <h2>
+                        Jeśli masz jakieś pytania, wątpliwości, skargi czy uwagi, to jest to właściwy moment.
+                    </h2>
+                </div>
+                <textarea name="rodo-notes" id="rodo-notes" cols="30" rows="10"></textarea>
+            </div>
+            <div class="subsection" id="rodo-clause-div">
+                <div class="sub-title">
+                    <h2>
+                        Klauzula informacyjna RODO
+                    </h2>
+                </div>
+                <textarea name="rodo-clause" id="rodo-clause" cols="30" rows="10" readonly>
+                    Zgodnie z art. 13 ogólnego rozporządzenia o ochronie danych osobowych z dnia 27 kwietnia 2016 r. (zwanego dalej: RODO) informuję, że:
+
+I.	Administratorem danych osobowych Uczestników/Uczestniczek rekrutacji Festiwalu Kultura Nieponura jest Towarzystwo Przyjaciół I SLO ul. Raszyńska 22 02-026 Warszawa, NIP 5251574221, Inspektorem Ochrony Danych Osobowych jest p. Dariusz Oskroba, iod@dag.pl, tel. +48 22 1007777, zwanym dalej TPISLO.
+II.	Podstawą przetwarzania danych osobowych jest dobrowolna zgoda Uczestnika/Uczestniczki rekrutacji wyrażona poprzez wypełnienie zgłoszenia zamieszczonego na stronie Festiwalu pod adresem http://kulturanieponura.pl/.
+III. Dane osobowe Uczestnika/Uczestniczki rekrutacji (imię, nazwisko, email, telefon, wizerunek) będą zbierane w celu organizacji i realizacji oraz przechowywane w związku z archiwizacją dokumentacji związanej z projektem w ramach którego sfinansowano realizację Festiwalu, tj. przez okres maksymalnie 5 lat*.
+IV.	Uczestnikowi/Uczestniczce rekrutacji na Festiwal Kultura Nieponura przysługuje prawo dostępu do treści swoich danych oraz prawo ich sprostowania, usunięcia, ograniczenia przetwarzania, prawo do przenoszenia danych, prawo wniesienia sprzeciwu, prawo do cofnięcia zgody na ich przetwarzanie w dowolnym momencie bez wpływu na zgodność z prawem przetwarzanie, którego dokonano na podstawie zgody wyrażonej przed jej cofnięciem*; Ponieważ warunkiem uczestnictwa w Festiwalu jest wyrażenie zgody na przetwarzanie danych osobowych i przesłanie formularza, to wycofanie tej zgody jest równoznaczne z rezygnacją z uczestnictwa w Festiwalu.
+V.	Uczestnikowi/Uczestniczce rekrutacji Festiwalu Kultura Nieponura przysługuje prawo wniesienia skargi do organu nadzorczego – Prezesa Urzędu Ochrony Danych Osobowych, z siedzibą w Warszawie przy ul. Stawki 2, 00-193 Warszawa;
+VI.	Podanie przez Uczestnika/Uczestniczce rekrutacji Festiwalu Kultura Nieponura danych osobowych jest dobrowolne, ale konieczne dla celów związanych z organizacją i realizacją wydarzenia, za wyjątkiem zgody na udostępnienie wizerunku administratorom spoza EOG.
+VII. Dane osobowe Uczestnika/Uczestniczki rekrutacji będą przetwarzane w sposób zautomatyzowany, jak i w sposób inny niż zautomatyzowany.
+
+* Prawo do usunięcia danych nie jest bezwzględne – ma w sobie pewne ograniczenia. Administratorzy danych udostępniający je w Internecie (m.in. media społecznościowe), rozpatrując żądanie usunięcia danych, mogą uwzględniać istniejące ograniczenia techniczne oraz koszty ich realizacji. Ponadto występują też ograniczenia tego prawa wynikające z artykułu 17. ustępu 3. RODO – wśród których jest m. in. prawo do wolności wypowiedzi i informacji.
+                </textarea>
+                <div class="req" id="RODO-accept-div">
+                    <div>
+                        <label for="RODO-accept" style="margin: 10px;">Zapoznałem i akceptuję klauzulę RODO</label>
+                        <input type="checkbox" id="RODO-accept" name="RODO-accept">
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection" id="rodo-info-div">
+                <p>
+                    * - wymagane    
+                </p>
+            </div>
+            <div class="subsection btn-subsection">
+                <button id="last-previous-button" to='3'>Cofnij</button>
+                <button id="submit-button">Prześlij formularz</button>
+            </div>
+        </div>
+        <div class="section-form" id="fill-everything-confirm">
+            <div class="subsection">
+                <div class="main-title">
+                    <h2>Prosimy o uzupełnienie zaznaczonych pól!</h2>
+                </div>
+                <p class="sub-info">
+                    Pola obowiązkowe są zaznaczone kolorem <span style="color: red;">czernownym</span>.
+                </p>
+                <div>
+                    <button id="close-validate-section" class="btn-remove">Zamknij</button>
+                </div>
+            </div>
+        </div>
+        <div class="section-form" id="fill-empty-input-confirm">
+            <div class="subsection">
+                <div class="main-title">
+                    <h2>Nie możesz dodawać pustej opcji!</h2>
+                </div>
+                <p class="sub-info">
+                    Prosimy, dodaj nazwę opcji, albo anuluj dodawanie.
+                </p>
+                <div>
+                    <button id="close-fill-empty-input-confirm" class="btn-remove">Zamknij</button>
+                </div>
+            </div>
+        </div>
+        <div class="section-form" id="section-sending-succes-div">
+            <div class="subsection">
+                <div class="main-title">
+                    <h2>Wysłano formularz! Dziękujemy za rejerstrację</h2>
+                </div>
+                <button id="close-sending-succes-section">
+                    <a href="{{ url_for('home_page') }}">Powrót na stronę główną</a>
+                </button>
+            </div>
+        </div>
+        <div class="section-form" id="section-sending-failed-div" style="height: auto;">
+            <div class="subsection">
+                <div class="main-title">
+                    <h2>
+                        Niestety napotkaliśmy niespodziewany problem w przetworzeniu twojego formularza,
+                        Promonujemy odświerzyć stronę (F5) albo użyć jednego z przycisków poniżej.
+                    </h2>
+                </div>
+                <button id="close-sending-failed-section-again" class="pink">
+                    <a href="{{ url_for('sign_up') }}">Ponów formularz</a>
+                </button>
+                <button id="close-sending-failed-section-home" class="blue">
+                    <a href="{{ url_for('home_page') }}">Powrót na stronę główną</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/formularz2.js') }}"></script>
+</body>
+{% endblock %}

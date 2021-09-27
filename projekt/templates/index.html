@@ -1,0 +1,681 @@
+{% extends 'base.html' %}
+
+{% block head_properties %}
+<title>Festiwal Kultura Nieponura</title>
+<link rel="icon" href="{{ url_for('static', filename='img/logo-long-new.png') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main_addition_css_pop_out.css') }}">
+{% endblock %}
+
+{% block body %}
+<body>
+    <!-- notification for small viewports and landscape oriented smartphones -->
+    <div class="device-notification">
+      <a class="device-notification--logo" href="http://kulturanieponura.pl">
+        <img id="header-logo" src="{{ url_for('static', filename='img/logo-long-new.png') }}" />
+      </a>
+      <p class="device-notification--message">
+        Nasza strona ma tyle do zaoferowania, że musimy Cię poprosić o obrócenie
+        ekranu w tryb pionowy :)
+      </p>
+    </div>
+    <div class="chmurka-kacpra">
+      <span class="close-events-info">X</span>
+      <!-- <div class="yt-player-holder">
+      <div class="yt-player"></div>  zostaje podmieniony na iframe w js </div> -->
+      <div class="events-info">
+        <h2 style="margin-right: 20px;"><span class="blue">C</span>entrum <span class="pink">P</span>raskie <span class="yellow">K</span>oneser<br/>26.06 - 29.07</h2>
+        {% for event in data["events"] %}
+          <div number="{{ loop.index - 1 }}" class="parent-div">
+            <p class="drop-menu-opener" number="{{ loop.index - 1 }}" title="Szczegóły"> <span number="{{ loop.index - 1 }}">></span> {{event["theme"]}} <span number="{{ loop.index - 1 }}" class="date">{{event["date"]}}</span></p>
+            <div class="detail-info">
+              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="blue">Kto: </span> {{ event["name"] }}</p>
+              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="pink">Co: </span> {{ event["theme"] }}</p>
+              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="yellow">Zaczyna się: </span> <span class="date date-full"> {{ event["date"] }}</span></p>
+              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="blue">Kończy się: </span> <span class="date date-full"> {{ event["duration"] }}</span></p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <hr class="white line-separate">
+      <div class="cafe-info">
+        <h2 style="margin-right: 20px;"><span class="blue">W</span>ystawy <span class="pink">S</span>ztuki w <span class="yellow">K</span>awiarniach <br/> 14.06 - 31.07</h2>
+        {% for cafe in data["cafes"] %}
+          <a class="cafe-link" href="{{cafe['link']}}">{{ cafe["name"]}}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="perspective effect-rotate-left">
+      <div class="container">
+        <div class="outer-nav--return"></div>
+        <div id="viewport" class="l-viewport">
+          <div class="l-wrapper">
+            <header class="header">
+              <a class="header--logo" href="http://193.39.71.15:8180">
+                <img class="header-logo" src="{{ url_for('static', filename='img/logo-long-new.png') }}" />
+                <p style="letter-spacing: 0.2em;"><span class="blue">F</span>ESTIWAL<br><span class="pink">K</span>ULTURA<br><span class="yellow">N</span>IEPONURA</p>
+              </a>
+              <button class="header--cta cta">SPRAWDŹ, CO U NAS</button>
+              <div class="header--nav-toggle">
+                <span></span>
+              </div>
+            </header>
+            <nav class="l-side-nav">
+              <ul class="side-nav">
+                <li class="is-active"><span>STRONA GŁÓWNA</span></li>
+                <li><span>O NAS</span></li>
+                <li><span>KONTAKT</span></li>
+                <li><span>SPRAWDŹ, CO U NAS</span></li>
+              </ul>
+            </nav>
+
+
+
+            <div class="scroll-down"></div>
+
+
+
+            <ul class="l-main-content main-content">
+              <li class="l-section section section--is-active">
+                <video autoplay muted loop class="videoBG">
+                  <source src="{{ url_for('static', filename='img/final.mp4') }}" type="video/mp4" />
+                  Your browser does not support HTML5 video.
+                </video>
+                <div
+                  class="imgBG"
+                  style="background-image: url('static/css/bg-mobile4.jpg')"
+                ></div>
+                <div class="intro">
+                  <div class="intro--banner">
+                    <h1>
+                      <span class="festiwal", data-aos="zoom-in", data-aos-duration="500">
+                        FESTIWAL
+                      </span><br>
+                      <span
+                        class="kultura"
+                        data-aos="zoom-in"
+                        data-aos-duration="500"
+                        >KULTURA</span
+                      ><br /><span
+                        class="nie"
+                        data-aos="zoom-in"
+                        data-aos-duration="1000"
+                        >NIE</span
+                      ><span  
+                        class="ponura"
+                        data-aos="zoom-in"
+                        data-aos-duration="1000"
+                        >PONURA</span
+                      >
+                    </h1>
+                    <button class="cta" data-aos="fade-up">
+                      SPRAWDŹ, CO U NAS
+                      <svg
+                        version="1.1"
+                        id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewBox="0 0 150 118"
+                        style="enable-background:new 0 0 150 118;"
+                        xml:space="preserve"
+                      >
+                        <g
+                          transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)"
+                        >
+                          <path
+                            d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"
+                          />
+                        </g>
+                      </svg>
+                      <span class="btn-background"></span>
+                    </button>
+ 
+                    <ZD>
+                      <br><br><br><br><br><br><br><br>
+                      <hr style="border: 1px solid rgb(140, 0, 90);">
+                      <p align='right' style="font-size: small;"><strong>Pomysłodawca i założyciel:</strong><br>
+                        <a href="mailto:zdzialkowska@gmail.com" title="zdzialkowska@gmail.com" style="font-size: small;"><strong>Zofia Działkowska</strong></a>
+                                          </p>
+                      </ZD>
+
+
+                  </div>
+                </div>
+              </li>
+
+              <li class="l-section section">
+                <div class="work">
+                  <!--DEMO01-->
+                  <div id="animatedModal">
+                    <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID -->
+                    <div id="btn-close-modal" class="close-animatedModal">
+                      <img src="{{url_for('static', filename='img/close.svg')}}" 
+                        class="close"
+                        style="width: 30px;cursor: pointer;" />
+                    </div>
+
+                    <div class="modal-content">
+                      <h1 class="modal-title">NASZ ZESPÓŁ</h1>
+                      <div class="team-member-row">
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/team 2020-2021/E83754E7-7BE1-4A92-B443-C1C11F75F9CA.jpeg')}}"
+                          />
+                          <figcaption>Milena</figcaption>
+                        </figure>
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/team 2020-2021/Stefan Korzeb_min_min.jpg')}}"
+                          />
+                          <figcaption>Stefan</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/team 2020-2021/ALeks.png')}}"
+                          />
+                          <figcaption>Aleks</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/team 2020-2021/Kacper-min-min-min.jpg')}}" />
+                          <figcaption>Kacper</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/team 2020-2021/image.png')}}"
+                          />
+                          <figcaption>Kazik</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/team 2020-2021/najlepsze Cropped (1).jpg')}}" />
+                          <figcaption>Stasiek</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/team 2020-2021/IMG_3437.jpg')}}" />
+                          <figcaption>Jurek</figcaption>
+                        </figure>
+
+                        <br style="clear: both;" />
+                      </div>
+
+                      <p class="aboutUs">
+                        Jesteśmy ambitną 
+                        <span style="color: #40E0D0; font-weight: bold">
+                          grupą młodych ludzi
+                        </span>, których wiąże zainteresowanie szeroko pojętą sztuką. Razem tworzymy 
+                        <span style="color: #FF0087; font-weight: bold">Festiwal Kultura Nieponura</span>. 
+                        Współpracując, chcemy nieść pomoc
+                        <span style="color: #32E875; font-weight: bold">młodym artystom</span> 
+                        oraz szerzyć wiedzę na temat 
+                        <span style="color: #32E875; font-weight: bold">legalnych źródeł kultury</span>.  
+                      </p>
+                      <h1 class="modal-title">OTO POMYSŁODAWCY I ORGANIZATORZY<br>PIERWSZYCH DWÓCH EDYCJI!</h1>
+                      <div class="team-member-row">
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/NATALIA.jpg')}}"
+                          />
+                          <figcaption>Natalia</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/ZOSIA.jpg')}}" />
+                          <figcaption>Zosia Działkowska</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/WERONIKA.jpg')}}"
+                          />
+                          <figcaption>Weronika</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/MAJA.jpg')}}" />
+                          <figcaption>Maja</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/BARTEK.jpg')}}"
+                          />
+                          <figcaption>Bartek</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/WIKTORIA.jpg')}}"
+                          />
+                          <figcaption>Wiktoria</figcaption>
+                        </figure>
+
+                        <br style="clear: both;" />
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- <div id="modal-02">
+                    
+                    <div id="btn-close-modal" class="close-modal-02">
+                      <img src="{{url_for('static', filename='img/close.svg')}}" 
+                        class="close"
+                        style="width: 30px;cursor: pointer;" />
+                    </div>
+
+                    <div class="modal-content">
+                      <h1 class="modal-title">Historia</h1>
+                      <div class="team-member-row">
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/nowy team/zosia-min.jpg')}}"
+                          />
+                          <figcaption>Zosia</figcaption>
+                        </figure>
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/nowy team/Tonia-min.jpeg')}}"
+                          />
+                          <figcaption>Tonia</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/nowy team/ALeks.png')}}"
+                          />
+                          <figcaption>Aleks</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/nowy team/Kacper-min-min-min.jpg')}}" />
+                          <figcaption>Kacper</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/nowy team/kuba-min.jpg')}}"
+                          />
+                          <figcaption>Kuba</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/nowy team/Staś-min-min.JPG')}}" />
+                          <figcaption>Stasiek</figcaption>
+                        </figure>
+
+
+
+                        <br style="clear: both;" />
+                      </div>
+
+                      <p class="aboutUs">
+                        Jesteśmy ambitną 
+                        <span style="color: #40E0D0; font-weight: bold">grupą młodych ludzi</span>
+                        , których wiąże zainteresowanie szeroko pojętą sztuką. Razem tworzymy 
+                        <span style="color: #FF0087; font-weight: bold">Festiwal Kultura Nieponura</span>. 
+                        Współpracując, chcemy nieść pomoc
+                        <span style="color: #32E875; font-weight: bold">młodym artystom</span> 
+                        oraz szerzyć wiedzę na temat 
+                        <span style="color: #32E875; font-weight: bold">legalnych źródeł kultury</span>.  
+                      </p>
+                        
+                      <h1 class="modal-title">OTO POMYSŁODAWCY I ORGANIZATORZY<br>PIERWSZYCH DWÓCH EDYCJI!</h1>
+                      <div class="team-member-row">
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/NATALIA.jpg')}}"
+                          />
+                          <figcaption>Natalia</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/ZOSIA.jpg')}}" />
+                          <figcaption>Zosia Działkowska</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/WERONIKA.jpg')}}"
+                          />
+                          <figcaption>Weronika</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img class="team-member" src="{{ url_for('static', filename='img/MAJA.jpg')}}" />
+                          <figcaption>Maja</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/BARTEK.jpg')}}"
+                          />
+                          <figcaption>Bartek</figcaption>
+                        </figure>
+
+                        <figure>
+                          <img
+                            class="team-member"
+                            src="{{ url_for('static', filename='img/WIKTORIA.jpg')}}"
+                          />
+                          <figcaption>Wiktoria</figcaption>
+                        </figure>
+
+                        <br style="clear: both;" />
+                      </div>
+
+                    </div>
+                  </div> -->
+                  <h2>KIM JESTEŚMY, CO ROBIMY?</h2>
+                  <div class="work--lockup">
+                    <ul class="slider">
+                      <li class="slider--item slider--item-center">
+                          <div
+                            class="slider--item-image"
+                            id="demo01"
+                            href="#animatedModal"
+                            style="cursor: pointer; box-shadow: 0 0 20px 6px #7BE8C4;"
+                          >
+                            <img src="{{ url_for('static', filename='img/7.png')}}" />
+                          </div>
+                          <p class="slider--item-title">KIM JESTEŚMY?</p>
+                          <p class="slider--item-description">
+                         Jesteśmy ambitną 
+                        <span style="color: #40E0D0; font-weight: bold">grupą młodych ludzi, </span>
+                        których wiąże zainteresowanie szeroko pojętą sztuką. Razem tworzymy 
+                       <span style="color: #FF0087; font-weight: bold">Festiwal Kultura Nieponura</span>.</p>
+                        </a>
+                      </li>
+
+                      <li class="slider--item slider--item-left">
+                          <div class="slider--item-image">
+                            <img src="{{ url_for('static', filename='img/1.png')}}" />
+                          </div>
+                          <p class="slider--item-title">JAK BĘDZIE W TYM ROKU?</p>
+                          <p class="slider--item-description">
+                              W tym roku formuła 
+                              <span style="color: #FF0087; font-weight: bold">FKN</span> 
+                              zależy od młodych artystów. Będziesz chciał pokazać swoje prace w 
+                              <span style="color: #32E875; font-weight: bold">warszawskich kawiarniach?</span>
+                              Może wolisz wystąpić w specjalnej 
+                              <span style="color: #7BE8C4; font-weight: bold;"> serii filmików, </span>
+                              które opublikujemy w naszych 
+                              <span style="color: #FF9933; font-weight: bold">social mediach?</span> 
+                              A może jeszcze coś innego? My dajemy możliwość - od Was zależy 
+                              <span style="color: #FF0087; font-weight: bold">czy z niej skorzystacie?</span> 
+                            </p>
+                        </a>
+                      </li>
+                      <li class="slider--item slider--item-behind">
+                          <div class="slider--item-image">
+                            <img src="{{ url_for('static', filename='img/perc.png')}}" />
+                          </div>
+                          <p class="slider--item-title">Z CZYM WALCZYMY?</p>
+                          <p class="slider--item-description">
+                            Z przeprowadzonej przez nas w 
+                            <span style="color: #FCAC1F; font-weight: bold">lipcu 2020</span> 
+                            roku ankiety wynika, że aż 
+                            <span style="color: #7BE8C4; font-weight: bold">8 na 10 </span>
+                            internautów korzysta lub korzystało z 
+                            <span style="color: #FF0087; font-weight: bold"> nielegalnych</span> 
+                            źródeł kultury.
+                            <span style="color: #FCAC1F; font-weight: bold"></span> 
+                            <span style="color: #FF0033; font-weight: bold"></span>.
+                          </p>
+                        </a>
+                      </li>
+                      <!-- <li class="slider--item slider--item-fifth">
+                          <div
+                            class="slider--item-image"
+                            id="demo02"
+                            href="#modal-02"
+                            style="cursor: pointer; box-shadow: 0 0 20px 6px #7BE8C4;"
+                          >
+                            <img src="{{ url_for('static', filename='img/7.png')}}" />
+                          </div>
+                          <p class="slider--item-title">Historia</p>
+                          <p class="slider--item-description">
+                         Lorem ipsum dolor sit amet. 
+                        <span style="color: #40E0D0; font-weight: bold">Lorem ipsum dolor sit.</span>
+                        Lorem ipsum dolor sit amet.
+                       <span style="color: #FF0087; font-weight: bold">Lorem ipsum dolor sit amet.</span>.</p>
+                        </a>
+                      </li> -->
+                      <li class="slider--item slider--item-right">
+                          <div class="slider--item-image">
+                            <img src="{{ url_for('static', filename='img/4.png')}}" />
+                          </div>
+                          <p class="slider--item-title">SZUKAMY PARTNERÓW</p>
+                          <p class="slider--item-description">
+                           <span style="color: #FF0087; font-weight: bold">Festiwal KN</span> 
+                           jest finansowany tylko z funduszy pozyskanych od 
+                           <span style="color: #FF9933; font-weight: bold">partnerów</span>. 
+                           Będzie nam miło za każde  
+                           <span style="color: #33FF66; font-weight: bold">wsparcie i promocję</span>. 
+                           Bez Ciebie <span style="color: #FF0087; font-weight: bold">Festiwal</span> się nie odbędzie!
+                          </p>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="slider--prev">
+                      <svg
+                        version="1.1"
+                        id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewBox="0 0 150 118"
+                        style="enable-background:new 0 0 150 118;"
+                        xml:space="preserve"
+                      >
+                        <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
+                          <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="slider--next">
+                      <svg
+                        version="1.1"
+                        id="Layer_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewBox="0 0 150 118"
+                        style="enable-background:new 0 0 150 118;"
+                        xml:space="preserve"
+                      >
+                        <g
+                          transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)"
+                        >
+                          <path
+                            d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
+                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"
+                          />                       
+		 </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="l-section section">
+                <video autoplay muted loop class="videoBG">
+                  <source src="{{ url_for('static', filename='img/final.mp4')}}" type="video/mp4" />
+                  Your browser does not support HTML5 video.
+                </video>
+
+                <div
+                  class="imgBG"
+                  style="background-image: url(static/css/bg-mobile5.jpg)"
+                ></div>
+                <div class="about">
+                  <div class="about--banner">
+                    <h2
+                      data-aos="fade-right"
+                      data-aos-offset="300"
+                      data-aos-easing="ease-in-sine"
+                    >
+                      ZAPRASZAMY DO KONTAKTU
+                    </h2>
+
+                    <!--                <img src="assets/img/about-visual.png" alt="About Us">-->
+                  </div>
+
+                  <div class="socials">
+                    <a target="_blank" href="mailto:kulturanieponura@gmail.com">
+                      <img
+                        src="{{ url_for('static', filename='img/close-envelope.svg')}}" 
+                        title="kulturanieponura@gmail.com"
+                        class="social"
+                        style="margin: 0px;"/>
+                      <!-- <p>kulturanieponura@gmail.com</p> -->
+                    </a>
+                    <a  
+                      target="_blank"
+                      href="https://www.facebook.com/kulturanieponura/"
+                    >
+                      <img src="{{ url_for('static', filename='img/facebook-logo.svg')}}" class="social" />
+                    </a>
+                    <a
+                      target="_blank"
+                      href="https://www.instagram.com/kulturanieponura/?hl=pl"
+                    >
+                      <img src="{{ url_for('static', filename='img/instagram.svg')}}" class="social" />
+                    </a>
+                    <a
+                      target="_blank"
+                      href="https://www.youtube.com/channel/UC56hW6mwP9eY1zsoSE0_vPw"
+                    >
+                      <img src="{{ url_for('static', filename='img/youtube.svg')}}" class="social" />
+                    </a>
+                    <p>
+                    <a target="_blank" href="mailto:kulturanieponura@gmail.com" style="transform: translate(-50%, -100%); color: #FC468F;">kulturanieponura@gmail.com</a>
+                    </p>
+                  </div>
+
+                </div>
+              </li>
+              <li class="l-section section">
+                <video autoplay muted loop class="videoBG">
+                  <source src="{{ url_for('static', filename='img/final.mp4')}}" type="video/mp4" />
+                  Your browser does not support HTML5 video.
+                </video>
+                <div
+                  class="imgBG"
+                  style="background-image: url(static/css/bg-mobile6.JPG); background-position: 60% 20%;"
+                ></div>
+                <div class="zglosiregulamin">
+                  <!-- <a target="_blank" href="https://app.evenea.pl/event/filmyitanieckn2020/"> -->
+                  <!--  target="_blank" href="{{ url_for('main.sign_up') }}"> -->
+                  <a target="_blank" href="{{ url_for('static', filename='Harmonogram-FKN2021.pdf')}}">
+                    <button class="btn">HARMONOGRAM FKN2021</button>
+                  </a>
+<!-- 
+                  <button class="btn">ZGŁOSZENIA ZAMKNIĘTE</button> -->
+
+                  <br />
+                  <!-- <button class="btn yellow">REGULAMIN WYDARZENIA - 17.10</button> -->
+
+                  <a
+                    target="_blank"
+                    href="https://fb.me/e/dYxBUIthN"
+                  >
+                    <button class="btn yellow">DO ZOBACZENIA NA FESTIWALU!</button>
+                  </a>
+                </div>
+
+
+
+                <div class="credits">
+                  THIS WEBSITE WAS MADE BY
+                  <span style="color: #36F0C7; font-weight: bold"
+                    ><a
+                      href="https://grafit.agency"
+                      style="color: #36F0C7;"
+                      >GRAFIT</a
+                    ></span
+                  >
+                  <br />all rights reserved &copy; 2021
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="outer-nav">
+        <li class="is-active hove">STRONA GŁÓWNA</li>
+        <li class="hove">O NAS</li>
+        <li class="hove">KONTAKT</li>
+        <li class="hove">SPRAWDŹ, CO U NAS</li>
+      </ul>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      let modalOpen = false;
+      window.jQuery ||
+        document.write(
+          '<script src="static/js/vendor/jquery-2.2.4.min.js"><\/script>'
+        );
+    </script>
+    <script src="{{ url_for('static', filename='js/functions-min.js')}}"></script>
+
+    <script src="{{ url_for('static', filename='js/animatedModal.js-master/animatedModal.min.js')}}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{{ url_for('static', filename='js/main_additional_func.js') }}"></script>
+    
+
+    <script>
+      //demo 01
+      $("#demo01").animatedModal({
+        color: "#000"
+      });
+
+      //demo 02
+      $("#demo02").animatedModal({
+        // animatedIn: "lightSpeedIn",
+        // animatedOut: "bounceOutDown",
+        color: "#000",
+        // Callbacks
+        // beforeOpen: function() {
+        //   console.log("The animation was called");
+        // },
+        // afterOpen: function() {
+        //   console.log("The animation is completed");
+        // },
+        // beforeClose: function() {
+        //   console.log("The animation was called");
+        // },
+        // afterClose: function() {
+        //   console.log("The animation is completed");
+        // }
+      });
+    </script>
+
+    <script>
+      AOS.init();
+    </script>
+  </body>
+{% endblock %}

@@ -1,0 +1,249 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+html, body {
+    color: rgb(216, 210, 210);
+    background-color: black;
+}
+
+.data {
+    filter: brightness(100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.data.fade-out {
+    pointer-events: none;
+    filter: brightness(50%);
+}
+
+.table-div {
+    border: 2px solid rgb(216, 210, 210);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+}
+
+.content {
+    margin: 0 auto;
+    width: 80%;
+}
+
+a {
+    color: #FC468F;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+a:visited, a {
+    color: #7BE8C4;
+    animation: ease-in 0.5s;
+}
+
+a:hover {
+    color: #FC468F;
+}
+
+.link-important {
+    color: #FC468F;
+    animation: ease-in 0.5s;
+}
+
+.link-important:hover {
+    color: #7BE8C4;
+    font-size: larger !important;
+}
+
+.details {
+    font-weight: bold;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: center;
+    height: 30px;
+    padding: 10px 5px;
+}
+
+td {
+    text-align: center;
+    height: auto;
+    min-width: auto;
+    padding: 10px 5px;
+    margin: auto;
+}
+
+.person-year-born {
+    min-width: 80px;
+}
+
+.open-counters-box {
+    cursor: pointer;
+    max-width: fit-content;
+}
+.open-counters-box:hover {
+    color: #FC468F;
+}
+
+.counters-box, .file-download, .selectors-promt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%) scale(0.05);
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    z-index: -1;    
+    padding: 20px;
+    transition: ease-in-out 0.3s;
+}
+
+.file-download {
+    z-index: -2;
+}
+
+.selectors-promt {
+    display: none;
+}
+
+.file-download {
+    display: grid;
+    grid-template-rows: auto auto 2fr auto;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+}
+
+.counters-box.active, .file-download.active, .selectors-promt.active {
+    z-index: 9999;
+    top: 15%;
+    transform: scale(1) translate(-50%, 0) ;
+}
+
+.selectors-promt.active {
+    display: flex;
+}
+
+.counters-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.main-holder {
+    border: 2px solid white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px auto 10px 10px;
+}
+
+.close-counters-box, .close-download-box, .close-download-promt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30;
+    color: red;
+    padding: 2%;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.close-counters-box:hover, .close-download-box:hover, .close-download-promt:hover {
+    transform: scale(1.5);
+}
+
+.option-holder p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.num {
+    margin-left: 10px;
+}
+
+.sort {
+    cursor: pointer;
+    color: #FC468F;
+}
+
+.selectors-teams {
+    grid-row: 3/4;
+    grid-column: 2/3;
+}
+
+.selectors-persons {
+    grid-row: 3/4;
+    grid-column: 1/2;
+}
+
+.download-file-header {
+    grid-row: 1/2;
+    grid-column: 1/3;
+}
+
+.statistiscs-selector {
+    grid-row: 2/3;
+    grid-column: 1/3;
+}
+
+.buttons {
+    grid-column: 1/3;
+    grid-row: 4/5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons :nth-child(1) {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #7BE8C4;
+    border-radius: 10px;
+    color: #7BE8C4;
+    background: none;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+}
+
+.buttons :nth-child(1):hover {
+    border: 2px solid black;
+    color: black;
+    background: #7BE8C4;
+}
+
+.buttons :nth-child(2) {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #FFD429;
+    border-radius: 10px;
+    color: #FFD429;
+    background: none;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+}
+
+.buttons :nth-child(2):hover {
+    border: 2px solid black;
+    color: black;
+    background: #FFD429;
+}
