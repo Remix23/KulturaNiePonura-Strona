@@ -1,4 +1,4 @@
-#!/mnt/d/Python/FLaskProjects/Kultura_nie_ponura/venv/bin/python3
+#!/mnt/d/python/KulturaNiePonura-Strona-main/projekt/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
