@@ -5,17 +5,13 @@ import re
 import os
 
 from flask import json, redirect, request, render_template, url_for, jsonify, send_from_directory, abort, Blueprint
+from flask_login import login_required, current_user
 from sqlalchemy import and_
 from .python.date_functions import convert_to_date, convert_to_str 
-from .python.writing_to_files import calculate_stats, log_all_to_excel, log_single_to_excel, log_selected_to_excel
-from .Settings import Settings
 
-
-settings = Settings()
 main = Blueprint("main", __name__)
 
 from . import db
-from . import app
 from .models import *
 
 def get_persons_and_teams ():
@@ -258,6 +254,7 @@ def accept_form_post ():
     return jsonify({'succes' : True, 'messages' : messages, 'status code': 200})
 
 @main.route('/delete/<table>/<int:id>')
+@login_required
 def remove_records (table, id):
 
     try:
@@ -303,103 +300,3 @@ def remove_records (table, id):
 def sign_up ():
     return abort(404)
     return ('formularz2.html')
-
-@main.route('/statistics/')
-def get_all_data():
-
-    persons_data, teams_data = get_persons_and_teams()
-
-    instytutions, art_kinds, promotion_types, know_from_types, born_dates, living_places = calculate_stats(persons_data, teams_data)
-
-    return render_template('statystyki.html', data={'persons' : persons_data, 'teams' : teams_data, 'instytutions' : instytutions, 'art_kinds' : art_kinds, 'promotion_types' : promotion_types, 'know_from_types' : know_from_types, 'living_places' : living_places, 'born_dates' : born_dates})
-
-@main.route('/statistics/<table>/<int:id>')
-def get_detail_info(table, id):
-
-    try:
-        if table == 'persons':
-            person = get_specyfic_person(id)
-            return render_template("show_person.html", data=person)
-        else:
-            team = get_specyfic_team(id)
-            return render_template("show_team.html", data=team)
-    
-    except Exception as e:
-        print(e)
-        return jsonify({'succes' : False, 'message' : 'There was an issue while selecting record fromm the database', 'error' : e, 'status code' : 1 }) 
-
-# pliki 
-@main.route('/download/all/<filetype>')
-def get_file_all (filetype : str):
-
-    persons, teams = get_persons_and_teams()
-
-    if filetype.lower() == 'excel':
-        path = app.config['EXCEL_FILES'] 
-        filename = 'dane.xlsx'
-
-        path_file = path + '/' + filename
-
-        if os.path.exists(path_file):
-            os.remove(path_file)
-        
-        log_all_to_excel(persons, teams, path_file)
-
-        return send_from_directory(path, filename = filename, as_attachment = True)  
-
-    elif filetype == 'html':
-        return filetype
-    elif filetype == 'json':
-        return jsonify({'persons' : persons, 'teams' : teams})
-
-@main.route('/download/selected/<filetype>', methods=['POST'])
-def get_selected_file (filetype):
-
-    persons, teams = get_persons_and_teams()
-
-    selected = request.get_json()
-
-    if filetype.lower() == 'excel':
-        path = app.config['EXCEL_FILES'] 
-        filename = 'dane_selected.xlsx'
-
-        path_file = path + '/' + filename
-
-        if os.path.exists(path_file):
-            os.remove(path_file)
-        
-        log_selected_to_excel(persons, teams, path_file, selector = selected)
-
-        return send_from_directory(path, filename = filename, as_attachment = True)  
-
-@main.route('/download/<table>/<int:id>/<filetype>')
-def get_file_single (table, id, filetype):
-
-    if table == 'person':
-        data = get_specyfic_person(id)
-        filename = f"person_id_{data['id']}.xlsx"
-    else:
-        data = get_specyfic_team(id)
-        filename = f"team_id_{data['id']}.xlsx"
-
-    if filetype == 'html':
-        return filetype
-    elif filetype == 'json':
-        return jsonify(data)
-    elif filetype == 'excel':
-        path = app.config['EXCEL_FILES'] 
-
-        path_file = path + '/' + filename
-
-        if os.path.exists(path_file):
-            os.remove(path_file)
-
-        log_single_to_excel(data, path_file)
-
-        return send_from_directory(path, filename = filename, as_attachment = True)  
-
-# kasowanie bugów 
-
-@app.teardown_appcontext
-def shutdown_session(exception=None):
-    db.session.remove()

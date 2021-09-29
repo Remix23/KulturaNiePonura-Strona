@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head_properties %}
-<title>Zaloguj się</title>
+<title>Zarejerstrój się</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/login-style.css')}}">
 {% endblock %}
 
@@ -11,11 +11,14 @@
             {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="notification is-danger">
-                    {{ messages[0] }}
+                    {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
                 </div>
             {% endif %}
             {% endwith %}
-            <form action="/login" method="POST">
+            <form action="/signup" method="POST">
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username">
+            <br>
             <label for="email">Email</label><br>
             <input type="text" id="email" name="email">
             <br>
@@ -23,7 +26,6 @@
             <input type="password" id="password" name="password">
             <br>
             <input type="submit" value="Zaloguj się">
-            <input type="button" onclick="window.location.href='/signup'" value="Zerejerstrój się">
             </form>
         </div>
 </body>

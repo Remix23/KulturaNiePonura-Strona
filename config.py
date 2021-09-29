@@ -4,8 +4,8 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-    DEBUG = True
-    TESTING = True
+    FLASK_DEBUG = True
+    FLASK_TESTING = True
     CSRF_ENABLED = True
     SECRET_KEY = os.urandom(16)
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db.main'
@@ -22,13 +22,14 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG = False
+    ENV = "production"
 
 class StagingConfig(Config):
-    DEVELOPMENT = True
+    ENV = "development"
     DEBUG = True 
 
 class DevelopmentConfig(Config):
-    DEVELOPMENT = True
+    ENV = "development"
     DEBUG = True
 
 class TestingConfig(Config):

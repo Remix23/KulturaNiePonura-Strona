@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from . import db
+from flask_login import UserMixin
 from datetime import datetime
 import random, string
 
-class StaffUser (db.Model):
+class StaffUser (UserMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
     email = db.Column(db.String(100), unique=True)

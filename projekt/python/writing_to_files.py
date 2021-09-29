@@ -1,6 +1,31 @@
 from openpyxl import Workbook
 from string import ascii_uppercase
 
+headers = {
+            "for_name" : "Imię",
+            "for_name_team_register" : "Imię osoby rejerstrującej zespół",
+            "last_name" : "Nazwisko",
+            "last_name_team_register" : "Nazwisko osoby rejerstrującej zespół",
+            "team_name" : "Nazwa zespołu",
+            "team_size" : "Ilośc osób w zespole",
+            "nick" : "Pseudonim",
+            "living_place" : "Miejsce zamieszkania",
+            "mail" : "Adres e-mail",
+            "phone_number" : "Numer telefonu", 
+            "social_channel" : "Linki do prac",
+            "about" : "Opis",
+            "art_kind_description" : "Opis twórczości",
+            "link" : "Link do profilu / kontaktu",
+            "notes" : "Notatki",
+            "instytutions" : "Instytucje",
+            "art_kinds" : "Rodzaje twórczosci",
+            "promotion_types" : "Proponowane sposoby promocji",
+            "know_from_types" : "Z kąd zna festiwal",
+            "year_born" : "Urodzony / urodzona",
+            "born_dates" : "Daty urodzenia członków zespołu",
+            "living_places" : "Miejsca zamieszkania członków zespołu",
+            "date_register" : "Data rejerstracji",
+        }
 def log_persons (persons : list, selector : dict,  workbook = None, title = 'Osoby'):
       
     if isinstance(workbook, Workbook):
@@ -14,14 +39,10 @@ def log_persons (persons : list, selector : dict,  workbook = None, title = 'Oso
 
     ws['A1'] = 'ID'
 
-    headers = ["imię", "nazwisko", "pseudomin", "miejsce zamieszkania", "adres e-mail",
-        "numer telefonu", "opis", "opis twórczości", "link do prac", "link do konkatu",
-        "notatki", "instytucje", "rodzaje sztuki", "proponowany rodzaj promocji", 
-        "zna festiwal z", "rok urodzenia", "data zerejestrowania"
-    ]
+
 
     for i, k in enumerate(to_log):
-        ws[f"{ascii_uppercase[i + 1]}1"] = s.headers[k]
+        ws[f"{ascii_uppercase[i + 1]}1"] = headers[k]
 
     for row, person in enumerate(persons):
         row_num = row + 2
@@ -47,7 +68,7 @@ def log_teams (teams : list, selector : dict, workbook = None, title = 'Zespoły
     ws['A1'] = 'ID'
 
     for i, k in enumerate(to_log):
-        ws[f"{ascii_uppercase[i + 1]}1"] = s.headers[k]
+        ws[f"{ascii_uppercase[i + 1]}1"] = headers[k]
 
     for row, team in enumerate(teams):
         row_num = row + 2
