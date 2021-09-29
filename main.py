@@ -4,7 +4,7 @@
 import re
 import os
 
-from flask import json, redirect, request, render_template, url_for, jsonify, send_from_directory, abort, Blueprint
+from flask import json, redirect, request, render_template, url_for, jsonify, send_from_directory, abort, Blueprint, current_app
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 from .python.date_functions import convert_to_date, convert_to_str 
@@ -134,7 +134,7 @@ def get_specyfic_team(id):
 
 @main.route('/')
 def home_page ():
-    path = "/home/kultura/FKNFlaskApp/FKNFlaskApp/static/cafes_events.json"
+    path = current_app.config["DATA"] + "cafes_events.json"
     with open(path, encoding = "utf-8") as f:
         data = json.load(f) # events and cafes 
 
