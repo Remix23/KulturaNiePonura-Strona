@@ -1,11 +1,11 @@
-from flask import Blueprint, send_from_directory, request, jsonify
+from flask import Blueprint, send_from_directory, request, jsonify, current_app
 import os
 from .python.writing_to_files import calculate_stats, log_all_to_excel, log_single_to_excel, log_selected_to_excel
 from .main import get_persons_and_teams, get_specyfic_person, get_specyfic_team
 
 files = Blueprint("files", __name__)
 
-files_path = 'projekt/static/excel_files'
+files_path = current_app.config["EXCEL_FILES"]
 
 @files.route('/download/all/<filetype>')
 def get_file_all (filetype : str):
@@ -37,7 +37,7 @@ def get_selected_file (filetype):
     selected = request.get_json()
 
     if filetype.lower() == 'excel':
-        filename = 'dane_selected.xlsx'
+        filename = 'dane_wybrane.xlsx'
 
         path_file = files_path + '/' + filename
 

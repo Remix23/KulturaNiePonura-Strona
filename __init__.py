@@ -23,15 +23,15 @@ def create_app():
     def load_user(user_id):
         # since the user_id is just the primary key of our user table, use it in the query for the user
         return StaffUser.query.get(int(user_id))
+    with app.app_context():
+        from .auth import auth as auth_blueprint
+        app.register_blueprint(auth_blueprint)
 
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
+        from .files import files as files_blueprint
+        app.register_blueprint(files_blueprint)
 
-    from .files import files as files_blueprint
-    app.register_blueprint(files_blueprint)
-
-    from .stats import stats as stats_blueprint
-    app.register_blueprint(stats_blueprint)
+        from .stats import stats as stats_blueprint
+        app.register_blueprint(stats_blueprint)
 
     from .main import main as main_blueprint 
     app.register_blueprint(main_blueprint) 
