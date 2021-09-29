@@ -5,7 +5,7 @@ from .main import get_persons_and_teams, get_specyfic_person, get_specyfic_team
 
 files = Blueprint("files", __name__)
 
-files_path = os.getcwd() + '/projekt/static/excel_files'
+files_path = '/home/kultura/FKNFlaskApp/FKNFlaskApp/static/excel_files'
 
 @files.route('/download/all/<filetype>')
 def get_file_all (filetype : str):
