@@ -134,7 +134,7 @@ def get_specyfic_team(id):
 
 @main.route('/')
 def home_page ():
-    path = "/home/kultura/FKNFlaskApp/FKNFlaskApp/static/cafes_events.json"
+    path = "projekt/static/cafes_events.json"
     with open(path, encoding = "utf-8") as f:
         data = json.load(f) # events and cafes 
 
