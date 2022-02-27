@@ -19,33 +19,6 @@
       </p>
     </div>
 
-    <!-- <div class="chmurka-kacpra">
-      <span class="close-events-info">X</span>
-      <div class="yt-player-holder">
-      <div class="yt-player"></div>  zostaje podmieniony na iframe w js </div>
-      <div class="events-info">
-        <h2 style="margin-right: 20px;"><span class="blue">C</span>entrum <span class="pink">P</span>raskie <span class="yellow">K</span>oneser<br/>26.06 - 29.07</h2>
-        {% for event in data["events"] %}
-          <div number="{{ loop.index - 1 }}" class="parent-div">
-            <p class="drop-menu-opener" number="{{ loop.index - 1 }}" title="Szczegóły"> <span number="{{ loop.index - 1 }}">></span> {{event["theme"]}} <span number="{{ loop.index - 1 }}" class="date">{{event["date"]}}</span></p>
-            <div class="detail-info">
-              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="blue">Kto: </span> {{ event["name"] }}</p>
-              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="pink">Co: </span> {{ event["theme"] }}</p>
-              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="yellow">Zaczyna się: </span> <span class="date date-full"> {{ event["date"] }}</span></p>
-              <p class="drop-down-element hidden-element" number="{{ loop.index - 1 }}"><span class="blue">Kończy się: </span> <span class="date date-full"> {{ event["duration"] }}</span></p>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-      <hr class="white line-separate">
-      <div class="cafe-info">
-        <h2 style="margin-right: 20px;"><span class="blue">W</span>ystawy <span class="pink">S</span>ztuki w <span class="yellow">K</span>awiarniach <br/> 14.06 - 31.07</h2>
-        {% for cafe in data["cafes"] %}
-          <a class="cafe-link" href="{{cafe['link']}}">{{ cafe["name"]}}</a>
-        {% endfor %}
-      </div>
-    </div> -->
-
     <div class="perspective effect-rotate-left">
       <div class="container">
         <div class="outer-nav--return"></div>
@@ -428,7 +401,7 @@
                             </p>
                         </a>
                       </li>
-                      <li class="slider--item slider--item-behind">
+                      <li class=" slider--item slider--item-behind">
                           <div class="slider--item-image">
                             <img src="{{ url_for('static', filename='img/perc.png')}}" />
                           </div>

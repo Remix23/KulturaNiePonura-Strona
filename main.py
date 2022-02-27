@@ -134,11 +134,7 @@ def get_specyfic_team(id):
 
 @main.route('/')
 def home_page ():
-    path = current_app.config["DATA"] + "cafes_events.json"
-    with open(path, encoding = "utf-8") as f:
-        data = json.load(f) # events and cafes 
-
-    return render_template('index.html', data = data)
+    return render_template('index.html')
 
 @main.route('/', methods=['POST'])
 def accept_form_post ():
@@ -298,5 +294,4 @@ def remove_records (table, id):
 
 @main.route('/registration')
 def sign_up ():
-    return abort(404)
     return ('formularz2.html')
