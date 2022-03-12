@@ -73,7 +73,6 @@ const showDates = (limit) => {
 
 function showPromt (promt) {
     promt.classList.add("active-promt")
-    console.log("elo")
 }
 
 function closePromt (promt) {

@@ -511,6 +511,7 @@ function isValidate (section) {
         if (input.value === '') {
             istatus = false;
             input.classList.add('rq-empty');
+            document.querySelector('input[id="mail-repeat"]').classList.add('rq-empty');
 
         } else if (input.getAttribute('id') === 'mail'){
             if (document.querySelector('input[id="mail-repeat"]').value != input.value) {
@@ -524,15 +525,15 @@ function isValidate (section) {
                 input.classList.remove('rq-empty');
             }
         } else if (input === bornDateInput) {
-            // checkDateValue(input);
+            checkDateValue(input) ? input.classList.remove("rq-empty") : input.classList.add("rq-empty");
         } else {
             input.classList.remove('rq-empty'); 
         }
     });
     rqDivs.forEach((div, index) => {
-        // if (div.getAttribute('id') === 'RODO-accept-div') {
-        //     dstatus.push(div.querySelector('#RODO-accept').checked)
-        // } else {
+
+        // check checkboxes 
+
         let nl = div.querySelectorAll('div')
         var arr = [];
         for(var i = nl.length; i--; arr.unshift(nl[i]));
@@ -641,7 +642,10 @@ function checkDateValue (input) {
         input.value = `${1995}${inputValue.slice(4, inputValue.length)}`;
     } else if (year > 2006) {
         input.value = `${2006}${inputValue.slice(4, inputValue.length)}`;
+    } else {
+        return true; // the date is correct 
     }
+    return false; // date is not correct
 }
 
 submitButton.addEventListener('click', (e) => {

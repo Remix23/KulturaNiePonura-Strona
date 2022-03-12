@@ -11,7 +11,7 @@
 <body>
     <header class="header-form">
         <div class="header-content">
-            <a class="header--logo" href="{{ url_for ('home_page') }}">
+            <a class="header--logo" href="{{ url_for ('main.home_page') }}">
                 <img class="header-logo-form" src="{{ url_for('static', filename='img/logo-long-new.png') }}" />
                 <p><span class="blue">F</span>ESTIWAL<br>
                     <span class="pink">K</span>ULTURA<br>
@@ -24,7 +24,7 @@
         <div class="section-form section-0 top">
             <div class="subsection">
                 <div class="main-title sub-title">
-                    <h1>Formularz Zgłoszeniowy <br><span class="blue">Festiwal</span> <span class="pink">Kultura</span> <span class="yellow">Nieponura</span> 2021</h1>
+                    <h1>Formularz Zgłoszeniowy <br><span class="blue">Festiwal</span> <span class="pink">Kultura</span> <span class="yellow">Nieponura</span> 2022</h1>
                 </div>
                 <p class="info" id="introduction">
                     Cześć! Bardzo się cieszymy, że chcesz się pokazać na Festiwalu Kultura Nieponura. 
@@ -408,7 +408,7 @@ VII. Dane osobowe Uczestnika/Uczestniczki rekrutacji będą przetwarzane w spos�
                     <h2>Wysłano formularz! Dziękujemy za rejerstrację</h2>
                 </div>
                 <button id="close-sending-succes-section">
-                    <a href="{{ url_for('home_page') }}">Powrót na stronę główną</a>
+                    <a href="{{ url_for('main.home_page') }}">Powrót na stronę główną</a>
                 </button>
             </div>
         </div>
@@ -421,10 +421,10 @@ VII. Dane osobowe Uczestnika/Uczestniczki rekrutacji będą przetwarzane w spos�
                     </h2>
                 </div>
                 <button id="close-sending-failed-section-again" class="pink">
-                    <a href="{{ url_for('sign_up') }}">Ponów formularz</a>
+                    <a href="{{ url_for('main.sign_up') }}">Ponów formularz</a>
                 </button>
                 <button id="close-sending-failed-section-home" class="blue">
-                    <a href="{{ url_for('home_page') }}">Powrót na stronę główną</a>
+                    <a href="{{ url_for('main.home_page') }}">Powrót na stronę główną</a>
                 </button>
             </div>
         </div>

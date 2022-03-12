@@ -1,5 +1,3 @@
-
-from genericpath import exists
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -27,8 +25,8 @@ def create_app():
     from .models import StaffUser
     @login_menager.user_loader
     def load_user(user_id):
-        # since the user_id is just the primary key of our user table, use it in the query for the user
         return StaffUser.query.get(int(user_id))
+
     with app.app_context():
         from .auth import auth as auth_blueprint
         app.register_blueprint(auth_blueprint)

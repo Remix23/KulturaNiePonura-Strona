@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import re
-import os
 
-from flask import json, redirect, request, render_template, url_for, jsonify, send_from_directory, abort, Blueprint, current_app
+from flask import request, render_template, jsonify, Blueprint
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 from .python.date_functions import convert_to_date, convert_to_str 
@@ -139,8 +138,15 @@ def home_page ():
 @main.route('/', methods=['POST'])
 def accept_form_post ():
 
-    TEAM_COUNTER = Team.query.order_by(Team.id.desc()).first().id
-    PERSON_COUNTER = Person.query.order_by(Person.id.desc()).first().id
+    if len(Team.query.order_by(Team.id.desc()).all()) > 0:
+        TEAM_COUNTER = Team.query.order_by(Team.id.desc()).first().id
+    else:
+        TEAM_COUNTER = 0
+        
+    if len(Person.query.order_by(Person.id.desc()).all()) > 0:
+        PERSON_COUNTER = Person.query.order_by(Person.id.desc()).first().id
+    else:
+        PERSON_COUNTER = 0
 
     messages = []
 
@@ -294,4 +300,4 @@ def remove_records (table, id):
 
 @main.route('/registration')
 def sign_up ():
-    return ('formularz2.html')
+    return render_template('formularz2.html')
