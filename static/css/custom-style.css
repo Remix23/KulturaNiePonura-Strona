@@ -329,7 +329,9 @@
 
  .team-member {
      width: 80px;
+     height: 80px;
      border-radius: 100%;
+     object-fit: cover;
      margin: 0 auto;
      margin-left: 20px;
      margin-right: 20px;
