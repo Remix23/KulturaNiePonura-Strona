@@ -328,8 +328,8 @@
  }
 
  .team-member {
-     width: 80px !important;
-     height: 80px !important;
+     width: 80px;
+     height: 80px;
      border-radius: 100%;
      object-fit: cover;
      margin: 0 auto;
@@ -421,6 +421,7 @@
 
      .team-member {
          width: 60px;
+         height: 60px;
          margin: calc(100vw/14);
          margin-top: 20%;
      }
@@ -471,6 +472,7 @@
  @media only screen and (max-width: 860px) {
      .team-member {
          width: 80px;
+         height: 80px;
          margin: calc(100vw/40);
          margin-top: 20%;
      }
@@ -514,6 +516,7 @@
 
      .team-member {
          width: 10vw;
+         height: 10vw;
      }
 
      figcaption {
