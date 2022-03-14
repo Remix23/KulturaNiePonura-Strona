@@ -22,7 +22,6 @@ def get_persons_and_teams ():
 
     # persons data 
     for person in all_registered_persons[::-1]:
-        looking_for_id = person.id - 1
         temp = {
             
             'id': person.id,
@@ -40,10 +39,10 @@ def get_persons_and_teams ():
             'about': person.about,
             'year_born': person.year_born,
             'date_register': convert_to_str(person.date_register),
-            'instytutions' : [x.name for x in Instytution.query.filter(and_(Instytution.for_who == looking_for_id, Instytution.for_who_type == 'person')).all()],
-            'art_kinds' : [x.type for x in ArtKinds.query.filter(and_(ArtKinds.for_who == looking_for_id, ArtKinds.for_who_type == 'person')).all()],
-            'promotion_types' : [x.name for x in PromotionTypes.query.filter(and_(PromotionTypes.for_who == looking_for_id, PromotionTypes.for_who_type == 'person')).all()],
-            'know_from_types' : [x.name for x in KnowFromTypes.query.filter(and_(KnowFromTypes.for_who == looking_for_id, KnowFromTypes.for_who_type == 'person')).all()]
+            'instytutions' : [x.name for x in Instytution.query.filter(and_(Instytution.for_who == person.id, Instytution.for_who_type == 'person')).all()],
+            'art_kinds' : [x.type for x in ArtKinds.query.filter(and_(ArtKinds.for_who == person.id, ArtKinds.for_who_type == 'person')).all()],
+            'promotion_types' : [x.name for x in PromotionTypes.query.filter(and_(PromotionTypes.for_who == person.id, PromotionTypes.for_who_type == 'person')).all()],
+            'know_from_types' : [x.name for x in KnowFromTypes.query.filter(and_(KnowFromTypes.for_who == person.id, KnowFromTypes.for_who_type == 'person')).all()]
         }
 
         persons_data.append(temp)
@@ -78,7 +77,6 @@ def get_persons_and_teams ():
     return persons_data, teams_data
 
 def get_specyfic_person(id):
-    looking_for_id  = id - 1
     person_obj = Person.query.get_or_404(id)
     person_data = {
         'id': person_obj.id,
@@ -96,10 +94,10 @@ def get_specyfic_person(id):
         'about': person_obj.about,
         'year_born': person_obj.year_born,
         'date_register': convert_to_str(person_obj.date_register),
-        'instytutions' : [x.name for x in Instytution.query.filter(and_(Instytution.for_who == looking_for_id, Instytution.for_who_type == 'person')).all()],
-        'art_kinds' : [x.type for x in ArtKinds.query.filter(and_(ArtKinds.for_who == looking_for_id, ArtKinds.for_who_type == 'person')).all()],
-        'promotion_types' : [x.name for x in PromotionTypes.query.filter(and_(PromotionTypes.for_who == looking_for_id, PromotionTypes.for_who_type == 'person')).all()],
-        'know_from_types' : [x.name for x in KnowFromTypes.query.filter(and_(KnowFromTypes.for_who == looking_for_id, KnowFromTypes.for_who_type == 'person')).all()]
+        'instytutions' : [x.name for x in Instytution.query.filter(and_(Instytution.for_who == person_obj.id, Instytution.for_who_type == 'person')).all()],
+        'art_kinds' : [x.type for x in ArtKinds.query.filter(and_(ArtKinds.for_who == person_obj.id, ArtKinds.for_who_type == 'person')).all()],
+        'promotion_types' : [x.name for x in PromotionTypes.query.filter(and_(PromotionTypes.for_who == person_obj.id, PromotionTypes.for_who_type == 'person')).all()],
+        'know_from_types' : [x.name for x in KnowFromTypes.query.filter(and_(KnowFromTypes.for_who == person_obj.id, KnowFromTypes.for_who_type == 'person')).all()]
     }
 
     return person_data
@@ -160,7 +158,7 @@ def accept_form_post ():
         last_name = "-"
     if not re.search('[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]', for_name):
         messages.append('Nie poprawne imię!')
-    if not re.search('[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]', last_name):
+    if not re.search('[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]', last_name) and last_name != "-":
         messages.append('Nie poprawne nazwisko!')
     with_who = incoming_json['withWho']
     artkinds = incoming_json['artkinds']
@@ -190,6 +188,7 @@ def accept_form_post ():
 
         temp = Person(for_name=for_name, last_name=last_name, nick=nick, social_channel=social_channel, living_place=living_place, about=about, notes=notes, phone_number=number, link=link, checkbox_super=checkbox_checked, year_born=convert_to_date(date_born), art_kind_desription=art_kind_more, mail=mail)
         db.session.add(temp)
+        PERSON_COUNTER += 1
         for i in with_who:
             if with_who == "artystka / artysta niezrzeszona / niezrzeszony":
                 temp = Instytution(name="artystka / artysta niezrzeszona / niezrzeszony", for_who=PERSON_COUNTER, for_who_type='person')
@@ -248,9 +247,7 @@ def accept_form_post ():
     try:
         db.session.commit()
     except Exception as e:
-        messages.append(type(e))
-    
-    if len(messages) > 0:
+        messages.append(str(e))
         return jsonify({'succes' : False, 'messages' : messages, 'status code': 400})
 
     return jsonify({'succes' : True, 'messages' : messages, 'status code': 200})
@@ -261,12 +258,11 @@ def remove_records (table, id):
 
     try:
         if table == 'person':
-            looking_for_id  = id - 1
             person = Person.query.get_or_404(id)
-            art_kinds = ArtKinds.query.filter(and_(ArtKinds.for_who == looking_for_id, ArtKinds.for_who_type == 'person')).all()
-            instytutions = Instytution.query.filter(and_(Instytution.for_who == looking_for_id, Instytution.for_who_type == 'person')).all()
-            promotion_types = PromotionTypes.query.filter(and_(PromotionTypes.for_who == looking_for_id, PromotionTypes.for_who_type == 'person')).all()
-            know_from_types = KnowFromTypes.query.filter(and_(KnowFromTypes.for_who == looking_for_id, KnowFromTypes.for_who_type)).all()
+            art_kinds = ArtKinds.query.filter(and_(ArtKinds.for_who == id, ArtKinds.for_who_type == 'person')).all()
+            instytutions = Instytution.query.filter(and_(Instytution.for_who == id, Instytution.for_who_type == 'person')).all()
+            promotion_types = PromotionTypes.query.filter(and_(PromotionTypes.for_who == id, PromotionTypes.for_who_type == 'person')).all()
+            know_from_types = KnowFromTypes.query.filter(and_(KnowFromTypes.for_who == id, KnowFromTypes.for_who_type)).all()
             db.session.delete(person)
         else:
             team = Team.query.get_or_404(id)
