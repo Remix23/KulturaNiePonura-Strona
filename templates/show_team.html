@@ -8,8 +8,8 @@
 {% block body %}
 <div class="content">
     <h1 style="text-align: center;margin: 1%;">{{ "Zespół: {} zajerejstrowany przez: {} {}".format(data['team_name']|upper, data['for_name_team_register'], data['last_name_team_register']) }}</h1>
-    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('home_page') }}">Strona główna</a></h4>
-    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('get_all_data') }}">Statystyki</a></h4>
+    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('main.home_page') }}">Strona główna</a></h4>
+    <h4 style="text-align: center;margin-bottom: 1%;"><a href="{{ url_for('stats.get_all_data') }}">Statystyki</a></h4>
     <div class="data">
         <div class="infos">
             <div class="general option-holder">
