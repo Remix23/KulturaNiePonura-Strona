@@ -62,7 +62,7 @@
                 <h4>Akcje</h4>
                 <li><a href="mailto:{{ data['mail'] }}">Napisz maila: </a></li>
                 <li><a href="/delete/person/{{ data['id'] }}">Usuń</a></li>
-                <li><a href="{{ url_for ('get_file_all', filetype='excel') }}">Pobierz wszystkie statystyki</a></li>
+                <li><a href="{{ url_for ('files.get_file_all', filetype='excel') }}">Pobierz wszystkie statystyki</a></li>
                 <li><a href="/download/person/{{ data['id'] }}/excel">Pobierz plik z tą osobą</a></li>
             </ul>
         </div>
