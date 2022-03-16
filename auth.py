@@ -45,9 +45,9 @@ def signup_post ():
 
     return redirect(url_for("auth.login"))
 
-@auth.route("/signup")
-def signup ():
-    return render_template("signup.html")
+# @auth.route("/signup")
+# def signup ():
+#     return render_template("signup.html")
 
 @auth.route('/logout')
 @login_required
