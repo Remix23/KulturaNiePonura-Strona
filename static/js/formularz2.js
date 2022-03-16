@@ -49,7 +49,7 @@ const pageUrl = '/'
 
 // data to form 
 const artKinds = {'Muzyka' : false, 'Fotografia' : false, 'Grafika' : false, 'Malarstwo' : false,'Rysunek' : false, 'Literatura' : false, 'Poezja' : false, 'Rzeźba' : false, 'Taniec' : false, 'Teatr' : false};
-const promotionTypes = {'Występ na koncercie' : false, 'Wystawy w kawiarniach' : false, 'Muzyka w tle w kawiarniach' : false, 'Wystawienie fragmentów twórczości literackiej / poetyckiej w kawiarnich' : false, 'Występ w filmie o artystach' : false, 'Sesja zdjęciowa na media społecznościowe' : false, 'Udostępnienie na mediach społecznościowych' : false};
+const promotionTypes = {'Występ w namiocie (Koneser)' : false, 'Występ na koncercie' : false, 'Wystawy w kawiarniach' : false, 'Muzyka w tle w kawiarniach' : false, 'Wystawienie fragmentów twórczości literackiej / poetyckiej w kawiarnich' : false, 'Występ w filmie o artystach' : false, 'Sesja zdjęciowa na media społecznościowe' : false, 'Udostępnienie na mediach społecznościowych' : false};
 const knowFrom = {'Facebook' : false, 'Instagram' : false, 'YouTube' : false, 'Strona internetowa' : false, 'Przyjaciele, Znajomi, Rodzina' : false, 'Byłam / byłem na jedej z poprzednich edycji' : false};
 
 const Instytutions = [];
