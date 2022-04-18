@@ -3,7 +3,7 @@
 
 import re
 
-from flask import request, render_template, jsonify, Blueprint
+from flask import abort, request, render_template, jsonify, Blueprint
 from flask_login import login_required, current_user
 from sqlalchemy import and_
 from .python.date_functions import convert_to_date, convert_to_str 
@@ -133,7 +133,7 @@ def get_specyfic_team(id):
 def home_page ():
     return render_template('index.html')
 
-@main.route('/', methods=['POST'])
+@main.route('/', methods=[''])
 def accept_form_post ():
 
     if len(Team.query.order_by(Team.id.desc()).all()) > 0:
@@ -296,4 +296,5 @@ def remove_records (table, id):
 
 @main.route('/registration')
 def sign_up ():
+    return abort(404)
     return render_template('formularz2.html')
