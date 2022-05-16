@@ -124,7 +124,7 @@
                   <!--DEMO01-->
                   <div id="animatedModal">
                     <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID -->
-                    <div id="btn-close-modal" class="close-animatedModal">
+                    <div id="btn-close-modal" class="close-animatedModal close-modal-btn">
                       <img src="{{url_for('static', filename='img/close.svg')}}" 
                         class="close"
                         style="width: 30px;cursor: pointer;" />
@@ -258,6 +258,19 @@
 
                     </div>
                   </div>
+
+                  <div id="modal03-parners">
+                    <div id="btn-close-modal02" class="close-modal03-parners close-modal-btn">
+                      <img src="{{ url_for('static', filename='img/close.svg') }}" 
+                      alt=""
+                      class="close"
+                      style="width: 30px; cursor: pointer;">
+                    </div>
+
+                    <div class="modal-content">
+                      
+                    </div>
+                  </div>
                   
                   <h2>KIM JESTEŚMY, CO ROBIMY?</h2>
                   <div class="work--lockup">
@@ -296,7 +309,7 @@
                               Może wolisz wystąpić w specjalnej 
                               <span style="color: #7BE8C4; font-weight: bold;"> serii filmików, </span>
                               które opublikujemy w naszych 
-                              <span style="color: #FF9933; font-weight: bold">social mediach?</span> 
+                              <span style="color: #FFD429; font-weight: bold">social mediach?</span> 
                               A może jeszcze coś innego? My dajemy możliwość - od Was zależy 
                               <span style="color: #FF0087; font-weight: bold">czy z niej skorzystacie?</span> 
                             </p>
@@ -309,46 +322,32 @@
                           <p class="slider--item-title">Z CZYM WALCZYMY?</p>
                           <p class="slider--item-description">
                             Z przeprowadzonej przez nas w 
-                            <span style="color: #FCAC1F; font-weight: bold">lipcu 2020</span> 
+                            <span style="color: #FFD429; font-weight: bold">lipcu 2020</span> 
                             roku ankiety wynika, że prawie
                             <span style="color: #7BE8C4; font-weight: bold">14 na 20 </span>
                             internautów korzysta lub korzystało z 
                             <span style="color: #FF0087; font-weight: bold"> nielegalnych</span> 
                             źródeł kultury.
-                            <span style="color: #FCAC1F; font-weight: bold"></span> 
-                            <span style="color: #FF0033; font-weight: bold"></span>.
                           </p>
                         </a>
                       </li>
-                      <!-- <li class="slider--item slider--item-fifth">
-                          <div
-                            class="slider--item-image"
-                            id="demo02"
-                            href="#modal-02"
-                            style="cursor: pointer; box-shadow: 0 0 20px 6px #7BE8C4;"
-                          >
-                            <img src="{{ url_for('static', filename='img/7.png')}}" />
-                          </div>
-                          <p class="slider--item-title">Historia</p>
-                          <p class="slider--item-description">
-                         Lorem ipsum dolor sit amet. 
-                        <span style="color: #40E0D0; font-weight: bold">Lorem ipsum dolor sit.</span>
-                        Lorem ipsum dolor sit amet.
-                       <span style="color: #FF0087; font-weight: bold">Lorem ipsum dolor sit amet.</span>.</p>
-                        </a>
-                      </li> -->
                       <li class="slider--item slider--item-right">
-                          <div class="slider--item-image">
+                          <div 
+                            class="slider--item-image" 
+                            id="demo03" 
+                            href="#modal03-partners" 
+                            style="cursor: pointer; box-shadow: 0 0 20px 6px #FF0087;"
+                          >
                             <img src="{{ url_for('static', filename='img/4.png')}}" />
                           </div>
-                          <p class="slider--item-title">SZUKAMY PARTNERÓW</p>
+                          <p class="slider--item-title">PARTNERZY</p>
                           <p class="slider--item-description">
                            <span style="color: #FF0087; font-weight: bold">Festiwal KN</span> 
                            jest finansowany tylko z funduszy pozyskanych od 
-                           <span style="color: #FF9933; font-weight: bold">partnerów</span>. 
+                           <span style="color: #FFD429; font-weight: bold">partnerów</span>. 
                            Będzie nam miło za każde  
-                           <span style="color: #33FF66; font-weight: bold">wsparcie i promocję</span>. 
-                           Bez Ciebie <span style="color: #FF0087; font-weight: bold">Festiwal</span> się nie odbędzie!
+                           <span style="color: #7BE8C4; font-weight: bold">wsparcie i promocję</span>. 
+                           Bez nich <span style="color: #FF0087; font-weight: bold">Festiwal</span> się nie odbędzie!
                           </p>
                         </a>
                       </li>
@@ -426,7 +425,6 @@
                         title="kulturanieponura@gmail.com"
                         class="social"
                         style="margin: 0px;"/>
-                      <!-- <p>kulturanieponura@gmail.com</p> -->
                     </a>
                     <a  
                       target="_blank"
@@ -464,10 +462,10 @@
                 ></div>
                 <div class="zglosiregulamin">
                   <!-- <a target="_blank" href="{{ url_for('main.sign_up')}}"> -->
-                  <a>
+                  <a target="_blank" href="{{url_for('static', filename='Regulamin-rekrutacji2022.pdf')}}">
                     <!-- <button class="btn">ZGŁOŚ SIĘ</button> -->
 
-                    <button class="btn" style="cursor: default;">ZGŁOSZENIA ZAMKNIĘTE</button>
+                    <button class="btn" style="cursor: pointer;">REGULAMIN REKRUTACJI</button>
                   </a>
 
                   <br />
@@ -524,6 +522,12 @@
       $("#demo01").animatedModal({
         color: "#000"
       });
+
+      $("#demo03-partners").animatedModal(
+        {
+
+        }
+      );
 
       //demo 02
       $("#demo02").animatedModal({
