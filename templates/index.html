@@ -259,16 +259,42 @@
                     </div>
                   </div>
 
-                  <div id="modal03-parners">
-                    <div id="btn-close-modal02" class="close-modal03-parners close-modal-btn">
+                  <div id="modal03">
+                    <div id="btn-close-modal02" class="close-modal03 close-modal-btn">
                       <img src="{{ url_for('static', filename='img/close.svg') }}" 
-                      alt=""
-                      class="close"
-                      style="width: 30px; cursor: pointer;">
+
+                        class="close"
+                        style="width: 30px; cursor: pointer;"/>
                     </div>
 
                     <div class="modal-content">
-                      
+                      <h1 class="modal-title">PARTNERZY</h1>
+                      <div class="partners-row">
+                        <figure>
+                          <img class="partner-fig" src="{{url_for('static', filename='img/Partners-logo/legalna kultura.png')}}" alt="">
+                          <figcaption>Fundacja Legalna Kultura</figcaption>
+                        </figure>
+                        <figure>
+                          <img class="partner-fig" src="{{url_for('static', filename='img/Partners-logo/zaiks-logo.png')}}" alt="">
+                          <figcaption>ZAIKS</figcaption>
+                        </figure>
+                        <figure>
+                          <img class="partner-fig" src="{{url_for('static', filename='img/Partners-logo/logo-chris.png')}}" alt="">
+                          <figcaption>CHRIS</figcaption>
+                        </figure>
+                        <figure>
+                          <img class="partner-fig" src="{{url_for('static', filename='img/Partners-logo/varsztatownia-logo.png')}}" alt="">
+                          <figcaption>Varsztatownia</figcaption>
+                        </figure>
+                        <figure>
+                          <img class="partner-fig" src="{{url_for('static', filename='img/Partners-logo/koneser-logo.png')}}" alt="">
+                          <figcaption>Centrum Praskie Koneser</figcaption>
+                        </figure>
+                        <figure>
+                          <img class="partner-fig" src="{{url_for('static', filename='img/Partners-logo/bsr-logo.png')}}" alt="">
+                          <figcaption>Bednarska Szkoła Realna</figcaption>
+                        </figure>
+                      </div>
                     </div>
                   </div>
                   
@@ -335,7 +361,7 @@
                           <div 
                             class="slider--item-image" 
                             id="demo03" 
-                            href="#modal03-partners" 
+                            href="#modal03" 
                             style="cursor: pointer; box-shadow: 0 0 20px 6px #FF0087;"
                           >
                             <img src="{{ url_for('static', filename='img/4.png')}}" />
@@ -462,10 +488,10 @@
                 ></div>
                 <div class="zglosiregulamin">
                   <!-- <a target="_blank" href="{{ url_for('main.sign_up')}}"> -->
-                  <a target="_blank" href="{{url_for('static', filename='Regulamin-rekrutacji2022.pdf')}}">
+                  <a target="_blank" href="https://www.facebook.com/kulturanieponura">
                     <!-- <button class="btn">ZGŁOŚ SIĘ</button> -->
 
-                    <button class="btn" style="cursor: pointer;">REGULAMIN REKRUTACJI</button>
+                    <button class="btn" style="cursor: pointer;">SPRAWDŹ CO U NAS</button>
                   </a>
 
                   <br />
@@ -523,9 +549,9 @@
         color: "#000"
       });
 
-      $("#demo03-partners").animatedModal(
+      $("#demo03").animatedModal(
         {
-
+          color: "#000"
         }
       );
 

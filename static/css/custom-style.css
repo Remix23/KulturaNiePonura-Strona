@@ -286,12 +286,12 @@
      margin-top: 20px;
  }
 
- #demo01:hover, #demo02:hover {
+ #demo01:hover, #demo02:hover, #demo03:hover {
      transition: 0.2s;
      transform: scale(1.1);
  }
 
- #demo01, #demo02 {
+ #demo01, #demo02, #demo03 {
      transition: 0.1s;
  }
 
@@ -309,7 +309,7 @@
  }
 
 
- #btn-close-modal {
+ #btn-close-modal, #btn-close-modal02 {
      text-align: center;
      margin-top: 100px;
      font-size: 3em;
@@ -317,14 +317,23 @@
 
 
  .team-member-row {
-     margin: 0 auto;
      display: inline-block;
      text-align: center;
      position: relative;
      left: 50%;
      transform: translateX(-50%);
+ }
 
-
+ .partners-row {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+     text-align: center;
+     position: relative;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 60%;
  }
 
  .team-member {
@@ -333,14 +342,26 @@
      border-radius: 100%;
      object-fit: cover;
      margin: 0 auto;
-     margin-left: 20px;
-     margin-right: 20px;
+     margin-left: 30px;
+     margin-right: 30px;
      /*          display: block;*/
-     margin-top: 10px;
+     margin-top: 20px;
      /*          float: left;*/
      /*          background: blue;*/
      text-align: center;
      float: left;
+     margin-bottom: 20px;
+ }
+
+ .partner-fig {
+     width: 150px;
+     height: 150px;
+     object-fit: contain;
+     margin: 0 auto;
+     margin-left: 30px;
+     margin-right: 30px;
+     margin-top: 10px;
+     text-align: center;
      margin-bottom: 20px;
  }
 
@@ -419,7 +440,7 @@
          /*              display: none;*/
      }
 
-     .team-member {
+     .team-member, .partner-fig {
          width: 60px;
          height: 60px;
          margin: calc(100vw/14);
@@ -470,7 +491,7 @@
 
 
  @media only screen and (max-width: 860px) {
-     .team-member {
+     .team-member, .partner-fig {
          width: 80px;
          height: 80px;
          margin: calc(100vw/40);

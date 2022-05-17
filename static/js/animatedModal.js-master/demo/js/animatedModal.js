@@ -24,7 +24,7 @@
             color: '#39BEB9',
             opacityIn: '1',
             opacityOut: '0',
-            animatedIn: 'zoomIn',
+            animatedIn: 'zoomIn', 
             animatedOut: 'zoomOut',
             animationDuration: '.6s',
             overflow: 'auto',
