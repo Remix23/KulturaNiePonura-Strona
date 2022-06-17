@@ -357,7 +357,6 @@
      width: 150px;
      height: 150px;
      object-fit: contain;
-     margin: 0 auto;
      margin-left: 30px;
      margin-right: 30px;
      margin-top: 10px;
@@ -378,7 +377,7 @@
  }
 
  figcaption {
-     margin-top: 20px;
+     margin-top: 10px;
  }
 
  .aboutUs {
