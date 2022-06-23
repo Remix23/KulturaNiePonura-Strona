@@ -376,8 +376,16 @@
      padding: 0;
  }
 
+ .partners-row figure {
+    margin-top: 15px;
+ }
+
  figcaption {
      margin-top: 10px;
+ }
+
+ .partners-row figcaption {
+    margin-top: 5px;
  }
 
  .aboutUs {
